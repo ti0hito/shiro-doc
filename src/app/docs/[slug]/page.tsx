@@ -19,8 +19,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const allPages = NAV_GROUPS.flatMap((g) => g.pages);
   const page = allPages.find((p) => p.slug === slug);
+  
   if (!page) return { title: "Página não encontrada" };
-  return { title: page.title, description: page.description };
+
+  const ogUrl = new URL("https://docs.shirobot.xyz/api/og");
+  ogUrl.searchParams.set("title", page.title);
+  if (page.description) ogUrl.searchParams.set("description", page.description);
+
+  return { 
+    title: `${page.title} - Shiro Docs`, 
+    description: page.description,
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      images: [
+        {
+          url: ogUrl.toString(),
+          width: 1200,
+          height: 630,
+        }
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.title,
+      description: page.description,
+      images: [ogUrl.toString()],
+    }
+  };
 }
 
 import { MDXRemote } from "next-mdx-remote/rsc";
