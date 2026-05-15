@@ -22,30 +22,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   if (!page) return { title: "Página não encontrada" };
 
-  const ogUrl = new URL("https://docs.shirobot.xyz/api/og");
-  ogUrl.searchParams.set("title", page.title);
-  if (page.description) ogUrl.searchParams.set("description", page.description);
+  const fullTitle = `${page.title} - Shiro Docs`;
+  const fullDesc = page.description || "Documentação oficial da Shiro Bot.";
+  const ogImage = "https://docs.shirobot.xyz/og.png";
 
   return { 
-    title: `${page.title} - Shiro Docs`, 
-    description: page.description,
+    title: fullTitle, 
+    description: fullDesc,
     openGraph: {
-      title: page.title,
-      description: page.description,
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-        }
-      ],
+      title: fullTitle,
+      description: fullDesc,
+      images: [ogImage],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: page.title,
-      description: page.description,
-      images: [ogUrl.toString()],
+      title: fullTitle,
+      description: fullDesc,
+      images: [ogImage],
     }
   };
 }
