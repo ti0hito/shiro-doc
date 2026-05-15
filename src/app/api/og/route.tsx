@@ -95,7 +95,7 @@ export async function GET(request: Request) {
               fontWeight: '600',
             }}
           >
-            <span>shirobot.xyz/docs</span>
+            <span>docs.shirobot.xyz</span>
           </div>
         </div>
       ),
