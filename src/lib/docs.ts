@@ -766,7 +766,9 @@ Temos três níveis de assinatura inspirados em cafés, cada um com foco em dife
 
 Compare os benefícios de cada plano e escolha o que melhor se encaixa no seu estilo:
 
-![Vantagens](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages.png)
+![Vantagens XP](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_xp.png)
+![Vantagens Limits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_limits.png)
+![Vantagens Benefits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_benefits.png)
 
 ---
 
@@ -789,7 +791,7 @@ As moedas adquiridas são adicionadas à sua **Carteira Global (Wallet)** e pode
 Precisa de ajuda, quer reportar um bug ou apenas conversar com outros usuários e criadores? Nosso servidor do Discord é o lugar ideal!
 
 <Callout variant="tip">
-  **Acesso Rápido:** Entre no nosso servidor oficial: [**Clique aqui para entrar!**](https://discord.gg/39jZxY68mR)
+  **Acesso Rápido:** [Entre no nosso servidor oficial](https://discord.gg/39jZxY68mR)
 </Callout>
 
 No nosso Discord você encontra:
