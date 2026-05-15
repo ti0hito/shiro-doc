@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-shiro: var(--shiro);
+  --color-shiro-soft: var(--shiro-soft);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+/* ── Shiro Docs — always dark ───────────────────────── */
+:root {
+  color-scheme: dark;
+
+  /* Shiro brand */
+  --shiro:       #5865f2;
+  --shiro-soft:  rgba(88, 101, 242, 0.12);
+
+  /* Surfaces */
+  --background:  #080808;
+  --foreground:  #f5f5f5;
+
+  --card:             #111111;
+  --card-foreground:  #f5f5f5;
+
+  --popover:          #111111;
+  --popover-foreground: #f5f5f5;
+
+  --primary:          #5865f2;
+  --primary-foreground: #ffffff;
+
+  --secondary:        #1a1a1a;
+  --secondary-foreground: #f5f5f5;
+
+  --muted:            #161616;
+  --muted-foreground: #888888;
+
+  --accent:           rgba(88, 101, 242, 0.10);
+  --accent-foreground: #f5f5f5;
+
+  --destructive:      #ef4444;
+  --border:           #1f1f1f;
+  --input:            #1a1a1a;
+  --ring:             #5865f2;
+
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar-bg:          #0d0d0d;
+  --sidebar-border:      #1a1a1a;
+  --sidebar-active-bg:   rgba(88, 101, 242, 0.10);
+  --sidebar-active-border: rgba(88, 101, 242, 0.35);
+  --sidebar-active-text: #fff;
+  --sidebar-width: 260px;
+  --header-height: 56px;
+}
+
+/* ── Base ────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50 box-border;
+  }
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  /* Headings inside .doc-content */
+  .doc-content h1 { @apply text-2xl font-semibold tracking-tight text-white mb-4 mt-0; }
+  .doc-content h2 { @apply text-xl font-semibold tracking-tight text-white mt-10 mb-3 scroll-mt-24 border-b border-border pb-2; }
+  .doc-content h3 { @apply text-base font-semibold text-white mt-7 mb-2 scroll-mt-24; }
+  .doc-content h4 { @apply text-sm font-semibold text-muted-foreground mt-5 mb-1 uppercase tracking-wider; }
+
+  .doc-content p { @apply text-[0.9375rem] leading-7 text-muted-foreground mb-4; }
+  .doc-content strong { @apply text-foreground font-semibold; }
+  .doc-content a { @apply text-primary underline-offset-4 hover:underline transition-colors; }
+
+  .doc-content ul { @apply list-disc pl-5 space-y-1.5 mb-4; }
+  .doc-content ol { @apply list-decimal pl-5 space-y-1.5 mb-4; }
+  .doc-content li { @apply text-[0.9375rem] leading-7 text-muted-foreground; }
+
+  .doc-content code:not(pre code) {
+    @apply text-[0.8125rem] font-mono bg-muted px-1.5 py-0.5 rounded text-foreground;
+  }
+  .doc-content pre {
+    @apply bg-card border border-border rounded-lg p-4 overflow-x-auto mb-5 text-sm;
+    font-family: var(--font-mono);
+  }
+  .doc-content pre code { @apply text-[0.8125rem] text-foreground; }
+
+  .doc-content hr { @apply border-border my-8; }
+  .doc-content blockquote { @apply border-l-2 border-primary/50 pl-4 italic text-muted-foreground; }
+
+  /* Tables */
+  .doc-content table { @apply w-full text-sm mb-6; }
+  .doc-content thead tr { @apply border-b border-border; }
+  .doc-content th { @apply text-left py-2 px-3 font-medium text-foreground; }
+  .doc-content td { @apply py-2 px-3 text-muted-foreground border-b border-border/50; }
+  .doc-content tbody tr:last-child td { @apply border-b-0; }
+}
+
+/* ── Custom scrollbar ────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--shiro); }
+
+/* ── Thin scrollbar for sidebar ─────────────────────── */
+.sidebar-scroll { scrollbar-width: thin; scrollbar-color: #222 transparent; }
+.sidebar-scroll::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 99px; }
+
+/* ── Utility ─────────────────────────────────────────── */
+.shiro-accent { color: var(--shiro); }
+.bg-shiro-soft { background-color: var(--shiro-soft); }
+
+/* anchor offset so headings aren't hidden under fixed header */
+[id] { scroll-margin-top: calc(var(--header-height) + 1.5rem); }
+
+/* Fade-in animation for page content */
+@keyframes doc-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.doc-fade { animation: doc-fade 0.25s ease forwards; }
+
+/* Active nav item left indicator */
+.nav-active-bar {
+  position: relative;
+}
+.nav-active-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 60%;
+  background: var(--shiro);
+  border-radius: 99px;
+}
