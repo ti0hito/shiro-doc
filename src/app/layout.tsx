@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: { default: "Shiro Docs", template: "%s · Shiro Docs" },
   description: "Documentação oficial da Shiro Bot — comandos, dashboard e mais.",
   metadataBase: new URL("https://docs.shirobot.xyz"),
+  openGraph: {
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
