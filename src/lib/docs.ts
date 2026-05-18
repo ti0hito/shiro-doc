@@ -785,6 +785,52 @@ As moedas adquiridas são adicionadas à sua **Carteira Global (Wallet)** e pode
 </Callout>
 `,
 
+  'arena-times': `
+# Arena de Times
+
+O Sistema de Times da Shiro permite que os membros do servidor se agrupem em equipes, acumulem XP juntos, gerenciem um tesouro compartilhado e até mesmo negociem jogadores no mercado!
+
+<Callout variant="tip">
+  O Sistema de Times é ideal para criar competitividade saudável e engajamento no seu servidor.
+</Callout>
+
+## Funcionalidades Principais
+
+### Arena (Lista de Times)
+Visualize todos os times registrados no servidor. Cada time possui:
+*   **Nome e Descrição**
+*   **Ícone e Banner personalizados**
+*   **Cor do Cargo no Discord** (exibida no cargo do time)
+*   **Status de Mercado** (Aberto ou Fechado para negociações)
+
+### Ranking de Times
+Acompanhe quais times estão dominando o servidor. O ranking leva em consideração:
+*   **Total de XP** acumulado pelos membros.
+*   **Tesouro** do time.
+
+### Tesouro do Time
+Cada time possui um cofre de moedas compartilhado:
+*   **Doações:** Qualquer membro do time pode doar moedas para o tesouro.
+*   **Uso:** O tesouro é utilizado para comprar jogadores no mercado.
+
+### Mercado de Jogadores
+Um mercado dinâmico onde os líderes podem negociar membros:
+*   **Vender Jogador:** O líder pode listar um membro do time no mercado por um valor em moedas.
+*   **Comprar Jogador:** Outros times podem usar o saldo do tesouro para comprar o jogador listado.
+
+## Gerenciamento (Apenas Líderes)
+Se você for o líder de um time, terá acesso à aba **Gerenciar** e **Editar**, onde pode:
+*   **Convidar Membros:** Envia um convite via DM para o usuário (o usuário precisa estar com as DMs abertas).
+*   **Remover Membros:** Expulsar um membro do time.
+*   **Vender Jogador:** Listar um membro no mercado.
+*   **Editar Perfil do Time:** Alterar nome, descrição, cores, ícone e banner.
+*   **Trancar/Abrir Mercado:** Definir se o time está aberto a negociações.
+
+<Callout variant="info">
+  Os convites expiram e podem ser cancelados pelo líder a qualquer momento na aba de gerenciamento.
+</Callout>
+`,
+
   discord: `
 # Comunidade & Suporte
 

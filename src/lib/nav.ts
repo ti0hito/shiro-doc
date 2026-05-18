@@ -60,9 +60,10 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Dashboard - Comunidade",
     pages: [
       { title: "Sistema de XP", slug: "sistema-xp" },
-      { title: "Cargos Agendados", slug: "agendamentos-dash", badge: "novo" },
+      { title: "Cargos Agendados", slug: "agendamentos-dash" },
       { title: "Voz Dinâmica", slug: "dynamicvoice-dash" },
       { title: "Alertas de Live", slug: "livealerts-dash", badge: "novo" },
+      { title: "Arena de Times", slug: "arena-times", badge: "novo" },
     ],
   },
   {
