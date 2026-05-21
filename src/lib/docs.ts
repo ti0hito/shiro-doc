@@ -11,7 +11,7 @@ A **Shiro** é uma bot multifuncional para Discord focada em comunidades de cria
   A Shiro foi desenhada para ser leve, poderosa, completa e focada na experiência do usuário.
 </Callout>
 
-![Shiro Preview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/home_doc.png)
+[![Shiro Preview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/home_doc.png)](https://shirobot.xyz)
 
 ## Como navegar nesta documentação
 Use a barra lateral à esquerda para navegar entre as seções.
@@ -389,13 +389,14 @@ Crie e personalize sua identidade visual com o editor web premium da Shiro. O Ca
 ## Editor Visual (Drag & Drop)
 Diferente de comandos de texto complicados, a Shiro oferece uma interface de "arrastar e soltar":
 *   **Posicionamento Livre:** Mova seu avatar, nome e badges para qualquer lugar do card.
-*   **Alinhamento Magnético:** Utilize as guias automáticas para garantir que tudo esteja perfeitamente centralizado.
 *   **Personalização de Cores:** Ajuste a paleta do card para combinar com a sua identidade visual.
+*   **Remoção de Elementos:** Remova elementos não necessários do card para manter-o limpo e simples.
 
 ## Elementos do Card
 *   **Status de Transmissão:** Exiba se você está em live ou gravando.
 *   **Créditos de Arte:** Espaço dedicado para dar os devidos créditos aos artistas do seu modelo/ilustração.
 *   **Redes Sociais:** Ícones clicáveis e arrobas das suas principais plataformas.
+*   **QR Code Personalizado:** Gere um QR Code de um link especifico para indexar uma rede social, um portifólio, uma pagina web ou um servidor de Discord.
 
 [![VTuber Card Editor](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vtuber_card.png)](https://shirobot.xyz/dashboard/vtuber-card)
 `,
@@ -408,7 +409,7 @@ A [Dashboard da Shiro](https://shirobot.xyz/dashboard) é o seu painel de contro
 ![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess.png)
 ![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess_2.png)
 
-## Menu de Seleção de Servidor
+## Menu de Sel  eção de Servidor
 Logo ao entrar, você verá a lista de todos os servidores onde possui permissão administrativa. Além dos seus servidores, o topo da página oferece atalhos rápidos para serviços globais:
 
 1. **Card VTuber:** Abre o editor visual para você criar e personalizar sua identidade VTuber (gratuito para todos).
