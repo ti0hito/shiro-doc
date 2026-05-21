@@ -455,7 +455,7 @@ A página de Visão Geral é a primeira tela que você vê ao entrar no painel d
 
 Acompanhe o crescimento e a atividade do seu servidor ao longo dos últimos 30 dias com gráficos e dados reais.
 
-![Analytics](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/analitycs.png)
+![Analytics](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/analitycs_2.png)
 
 ## Métricas Disponíveis
 Na aba Analytics, você tem acesso a relatórios detalhados divididos em duas grandes áreas:
@@ -549,17 +549,169 @@ Ao digitar o comando, a Shiro abrirá instantaneamente um **Menu Pop-up (Modal)*
   'sistema-xp': `
 # Sistema de XP
 
-Transforme seu servidor em um ambiente engajado através do módulo de XP.
+Transforme seu servidor em um ambiente engajado através do módulo de XP. Membros ganham experiência ao conversar e participar de calls de voz, sobem de nível, desbloqueiam recompensas e competem no ranking do servidor.
 
 <Callout variant="tip">
-  Gerencie canais ignorados, prêmios por nível e resets de podium pela nossa Dashboard no menu **Sistema de XP**.
+  Gerencie todas as configurações abaixo pela nossa Dashboard no menu **Sistema de XP**, na aba **Configurações**.
 </Callout>
 
+![XP](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_system.png)
+
+## Ativar / Desativar o Sistema
+O primeiro passo é ligar o módulo de XP no seu servidor. Enquanto estiver desativado, nenhum membro ganhará experiência ou moedas.
+*   **Dashboard:** Acesse a aba **Progresso de XP** > **Configuração** e alterne o botão de **Status do Sistema**.
+
+![XP On](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_on.png)
+
+## Como se Ganha XP?
+
+### XP por Mensagens (Texto)
+Cada mensagem enviada rende entre **12 e 40 XP**, calculados automaticamente com base na qualidade da mensagem:
+*   **Tamanho:** Mensagens mais longas rendem um bônus de até **+15 XP** (1 XP extra a cada 5 caracteres).
+*   **Complexidade:** Mensagens com mais palavras ganham um bônus de até **+10 XP** (1 XP extra a cada 3 palavras).
+*   **Variância Natural:** Um ajuste aleatório de ±3 XP é aplicado para que o ganho pareça orgânico.
+*   **Cooldown:** Existe um intervalo de **5 segundos** entre ganhos de XP para evitar flood.
+
+<Callout variant="info" title="Anti-Spam Inteligente">
+  A Shiro ignora automaticamente mensagens muito curtas (menos de 3 caracteres), com caracteres repetidos excessivos (ex: "kkkkkkkkkkkk"), keyboard mash e mensagens duplicadas enviadas mais de 3 vezes seguidas. Essas mensagens não contam para XP.
+</Callout>
+
+### XP por Voz (Call)
+Participar de canais de voz também rende XP! A cada minuto em call, o membro recebe:
+*   **Base:** 15 XP/min em uma call com 2+ pessoas.
+*   **Câmera Ligada:** +15 XP/min de bônus.
+*   **Transmitindo Tela (Stream):** +10 XP/min de bônus.
+*   **Teto Máximo:** 40 XP/min (combinando todos os bônus).
+
+<Callout variant="warning">
+  **Anti-Farm:** Se o membro estiver **sozinho** na call, o ganho é reduzido drasticamente para apenas **2 XP/min**, desencorajando o farm de XP em canais vazios.
+</Callout>
+
+## Conversão de XP em Moedas
+O XP acumulado é convertido automaticamente em **moedas locais** do servidor na proporção de **1 moeda a cada 15 XP**. Essas moedas são usadas para comprar itens na Loja de Pontos do servidor.
+
+## Sistema de Streak (Dias Consecutivos)
+Manter atividade diária no servidor recompensa o membro com multiplicadores crescentes de XP:
+
+| Dias Consecutivos | Multiplicador de XP |
+|:---|:---:|
+| 🔥 3 dias | **+10%** |
+| 🔥 7 dias | **+20%** |
+| 🔥 14 dias | **+30%** |
+| 🔥 30+ dias | **+50%** |
+
+<Callout variant="warning">
+  **Importante:** Se o membro ficar **1 dia sem atividade**, o streak é resetado para 0. Membros **VIP** possuem tolerância extra (dias de folga sem perder o streak).
+</Callout>
+
+*   Itens da **CoffeeShop** podem conceder proteção de streak temporária.
+
+## Milestones (Marcos Especiais)
+Ao atingir determinados níveis, o membro recebe um bônus massivo de moedas como recompensa:
+
+| Nível Alcançado | Recompensa em Moedas |
+|:---:|:---:|
+| **Nível 10** | 🪙 700 moedas |
+| **Nível 25** | 🪙 1.500 moedas |
+| **Nível 50** | 🪙 3.000 moedas |
+| **Nível 75** | 🪙 7.500 moedas |
+| **Nível 100** | 🪙 10.000 moedas |
+
+## Notificações de Level Up
+Configure como a Shiro deve avisar quando um membro subir de nível. Você pode escolher entre 3 modos:
+*   **Resposta no Chat:** A Shiro responde diretamente à mensagem que causou o level up.
+*   **Canal Específico:** Todas as notificações de level up são enviadas para um canal de texto dedicado (ex: #level-ups).
+*   **Mensagem Direta (DM):** O membro recebe a notificação via DM privada.
+
+![XP Notificação](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_notify.png)
+
+## Canais Bloqueados (Blacklist)
+Impeça que membros ganhem XP em canais específicos. Útil para excluir canais onde o conteúdo não deve contar como atividade:
+*   **Canais de Texto:** Selecione canais como \`#bot-commands\`, \`#spam\` ou \`#off-topic\` onde mensagens não devem render XP.
+*   **Canais de Voz:** Selecione canais de voz como \`🎵 Música\` ou \`AFK\` onde o tempo em call não deve contar.
+
+![XP Canais Bloqueados](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_block.png)
+
+## Cargos Bloqueados
+Membros que possuírem qualquer cargo desta lista **não ganharão XP nem moedas** ao enviar mensagens ou ficar em call. Ideal para:
+*   Cargos de punição (ex: "Muted", "Isolado").
+*   Bots ou contas de serviço.
+*   Membros que você não deseja que participem do ranking.
+
+![XP Cargos Bloqueados](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_block_roles.png)
+
+## Cargos de Pódio (Top 3)
+Recompense os membros mais ativos automaticamente com cargos exclusivos! Configure um cargo para cada posição do pódio:
+*   **🥇 Top 1:** O membro com mais XP competitivo recebe este cargo.
+*   **🥈 Top 2:** O segundo colocado.
+*   **🥉 Top 3:** O terceiro colocado.
+
+![XP Cargos de Pódio](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_podium.png)
+
+### Intervalo de Reset do Pódio
+O ranking competitivo pode ser resetado automaticamente em ciclos configuráveis:
+*   **Eterno (Forever):** O ranking nunca reseta. O pódio é vitalício.
+*   **Semanal:** Reseta toda semana, os cargos são redistribuídos.
+*   **Quinzenal:** Reseta a cada 2 semanas.
+*   **Mensal:** Reseta todo mês.
+
+<Callout variant="info">
+  Os cargos de pódio são atualizados automaticamente a cada reset. O membro que perder sua posição terá o cargo removido e o novo líder o receberá.
+</Callout>
+
+## Missões Semanais (Quests)
+Ative o sistema de missões para dar aos membros objetivos concretos e recompensas extras:
+*   Missões são geradas automaticamente a cada semana.
+*   Exemplos: "Envie 50 mensagens", "Fique 30 minutos em call", "Mantenha um streak de 3 dias".
+*   Ao completar uma quest, o membro ganha bônus de XP e moedas.
+
+Use o comando \`/quests\` no Discord para visualizar as missões disponíveis.
+
+![XP Missões](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_quests.png)
+
+## Ferramentas Administrativas (Zona de Perigo)
+Na aba de configurações, administradores têm acesso a ferramentas destrutivas para gestão de dados:
+*   **Resetar XP do Servidor:** Zera todo o XP acumulado por todos os membros. Os níveis voltam ao 1. **Esta ação é irreversível.**
+*   **Deletar XP e Moedas:** Remove completamente todos os dados de XP e moedas do servidor. *(Restrito a desenvolvedores.)*
+
+<Callout variant="warning">
+  **Atenção:** Ambas as ações exigem confirmação via diálogo e são **permanentes**. Recomendamos usar apenas em casos extremos, como reiniciar completamente o sistema de economia do servidor.
+</Callout>
+
+![XP Ferramentas Administrativas](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_tools.png)
+
+## Comandos Relacionados
+*   \`/xp ver\` — Veja seu nível, XP e progresso atual.
+*   \`/xp ver [usuario]\` — Confira o XP de outro membro.
+*   \`/xp ranking\` — Veja o Top 10 do servidor.
+*   \`/quests\` — Visualize suas missões semanais.
+*   \`/wallet\` — Confira seu saldo de moedas.
+`,
+
+  honeypot: `
+# Honeypot (Canal Armadilha)
+
+Configure um canal invisível para atuar como "isca" e capturar bots de spam, raiders ou contas falsas automaticamente.
+
+<Callout variant="tip">
+  Esta é uma das defesas mais eficazes contra bots de divulgação que entram no servidor, interagem com canais desprotegidos e enviam DMs maliciosas para seus membros.
+</Callout>
+
+![Honeypot Channel](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/honeypot.png)
+
+## Como funciona?
+1. **O Canal Isca:** Você cria um canal de texto no seu servidor e restringe a permissão de \`Visualizar Canal\` e \`Ler Histórico\` para o cargo @everyone.
+2. **A Armadilha:** Na Dashboard, você seleciona este canal oculto na aba **Honeypot**.
+3. **A Captura:** Qualquer conta que enviar uma mensagem nesse canal será imediatamente punida. (Como membros normais não conseguem ver o canal, qualquer envio de mensagem indica uso de scripts maliciosos ou clientes não-oficiais de self-bot).
+
 ## Configurações Principais
-*   **Canais Ignorados:** Selecione canais onde o bot não dará XP por mensagens (ideal para chats de comandos ou spam).
-*   **Recompensas por Nível:** Escolha quais cargos são dados em níveis específicos (ex: Nível 50 = Cargo Elite).
-*   **Reset de Podium:** Configure ciclos (semanais, mensais) para resetar o ranking competitivo, premiando os usuários mais ativos de cada temporada.
-*   **XP Multiplier (Eventos):** *Configuração avançada geralmente gerida via eventos globais ou boosts de VIP.*
+*   **Punição:** Escolha entre **Ban** (Recomendado), **Kick** ou **Timeout de 24h**.
+*   **Limpeza de Histórico:** Ao optar pelo **Ban**, você pode configurar para que todas as mensagens daquele bot no servidor (retroativas de 1h a 7 dias) sejam excluídas magicamente.
+*   **Notificação DM:** Texto personalizado que a Shiro enviará para a conta banida (aparecerá também no Registro de Auditoria do Discord).
+
+<Callout variant="warning">
+  **Imunidade Automática:** Usuários com permissão de \`Administrador\` e todos os cargos que você adicionou na lista de "Cargos Ignorados" do AutoMod são naturalmente imunes à armadilha, para evitar acidentes pela sua staff.
+</Callout>
 `,
 
   automod: `

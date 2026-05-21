@@ -47,8 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CommandCard } from "@/components/CommandCard";
 import { Callout } from "@/components/Callout";
-
-// ... (anterior)
+import remarkGfm from "remark-gfm";
 
 export default async function DocPage({ params }: Props) {
   const { slug } = await params;
@@ -90,7 +89,15 @@ export default async function DocPage({ params }: Props) {
 
         {/* Doc content */}
         <div className="doc-content doc-fade">
-          <MDXRemote source={content} components={components} />
+          <MDXRemote 
+            source={content} 
+            components={components} 
+            options={{
+              mdxOptions: {
+                remarkPlugins: [remarkGfm],
+              },
+            }}
+          />
         </div>
         
         {/* ... (restante igual) */}

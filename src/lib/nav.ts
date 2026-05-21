@@ -50,6 +50,7 @@ export const NAV_GROUPS: NavGroup[] = [
     pages: [
       { title: "Verificação", slug: "verificacao-dash" },
       { title: "Auto Moderação", slug: "automod" },
+      { title: "Honeypot", slug: "honeypot", badge: "novo" },
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
       { title: "Avisos & Relatórios", slug: "warns-dash" },
@@ -62,7 +63,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Sistema de XP", slug: "sistema-xp" },
       { title: "Cargos Agendados", slug: "agendamentos-dash" },
       { title: "Voz Dinâmica", slug: "dynamicvoice-dash" },
-      { title: "Alertas de Live", slug: "livealerts-dash", badge: "novo" },
+      { title: "Alertas de Live", slug: "livealerts-dash" },
       { title: "Arena de Times", slug: "arena-times", badge: "novo" },
     ],
   },
