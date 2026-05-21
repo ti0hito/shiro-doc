@@ -397,7 +397,7 @@ Diferente de comandos de texto complicados, a Shiro oferece uma interface de "ar
 *   **Créditos de Arte:** Espaço dedicado para dar os devidos créditos aos artistas do seu modelo/ilustração.
 *   **Redes Sociais:** Ícones clicáveis e arrobas das suas principais plataformas.
 
-![VTuber Card Editor](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vtuber_card.png)
+[![VTuber Card Editor](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vtuber_card.png)](https://shirobot.xyz/dashboard/vtuber-card)
 `,
 
   'como-acessar': `
@@ -473,7 +473,7 @@ O Perfil do Usuário é a sua área pessoal (global) dentro da Shiro. Ele não e
 
 Você pode acessá-lo clicando no seu avatar/nome de usuário no menu lateral ou através do cabeçalho principal da Dashboard.
 
-![Perfil do Usuário](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/profile.png)
+[![Perfil do Usuário](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/profile.png)](https://shirobot.xyz/perfil)
 
 ## O que você pode fazer no Perfil?
 *   **Identidade Visual:** Exiba suas insígnias (Badges), conquistas e redes sociais em um cartão dinâmico exclusivo. *(Em Breve)*
@@ -904,13 +904,13 @@ Evolua sua experiência na Shiro e apoie o desenvolvimento do projeto com nossos
 
 A Shiro oferece um ecossistema de benefícios que afeta tanto o seu perfil global quanto os servidores que você gerencia ou frequenta.
 
-![Vip Overview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vip_overview.png)
+[![Vip Overview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vip_overview.png)](https://shirobot.xyz/vip)
 
 ## Tiers de Assinatura (VIP)
 
 Temos três níveis de assinatura inspirados em cafés, cada um com foco em diferentes necessidades:
 
-![VIP Tiers](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vip_tiers.png)
+[![VIP Tiers](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vip_tiers.png)](https://shirobot.xyz/vip)
 
 ---
 
@@ -918,9 +918,9 @@ Temos três níveis de assinatura inspirados em cafés, cada um com foco em dife
 
 Compare os benefícios de cada plano e escolha o que melhor se encaixa no seu estilo:
 
-![Vantagens XP](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_xp.png)
-![Vantagens Limits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_limits.png)
-![Vantagens Benefits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_benefits.png)
+[![Vantagens XP](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_xp.png)](https://shirobot.xyz/vip)
+[![Vantagens Limits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_limits.png)](https://shirobot.xyz/vip)
+[![Vantagens Benefits](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/advantages_benefits.png)](https://shirobot.xyz/vip)
 
 ---
 
@@ -928,7 +928,7 @@ Compare os benefícios de cada plano e escolha o que melhor se encaixa no seu es
 
 Se você não deseja uma assinatura mensal, mas precisa de moedas agora para comprar aquele cargo exclusivo na loja do seu servidor favorito, você pode adquirir **Pacotes de Moedas** avulsos.
 
-![Care Package](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/care_package.png)
+[![Care Package](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/care_package.png)](https://shirobot.xyz/vip)
 
 As moedas adquiridas são adicionadas à sua **Carteira Global (Wallet)** e podem ser enviadas para qualquer servidor que utilize o sistema de economia da Shiro.
 
