@@ -990,7 +990,7 @@ Se você for o líder de um time, terá acesso à aba **Gerenciar** e **Editar**
 Precisa de ajuda, quer reportar um bug ou apenas conversar com outros usuários e criadores? Nosso servidor do Discord é o lugar ideal!
 
 <Callout variant="tip">
-  **Acesso Rápido:** [Entre no nosso servidor oficial](https://discord.gg/39jZxY68mR)
+  **Acesso Rápido:** [Entre no nosso servidor oficial](https://discord.gg/JfJX2JnVh8)
 </Callout>
 
 No nosso Discord você encontra:
