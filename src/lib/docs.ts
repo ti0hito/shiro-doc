@@ -60,7 +60,7 @@ Após adicionar o bot, você pode começar a configurar as funcionalidades princ
 Agora que a Shiro está no seu servidor, que tal configurar os módulos principais?
 *   [Configurar Verificação de Artistas](/docs/verificacao-dash)
 *   [Ativar Sistema de XP](/docs/sistema-xp)
-*   [Personalizar o AutoMod](/docs/automod)
+*   [Configurar Canal Armadilha](/docs/honeypot)
 `,
 
   moderacao: `
@@ -69,7 +69,7 @@ Agora que a Shiro está no seu servidor, que tal configurar os módulos principa
 Gerencie seu servidor com precisão e configure as regras do bot.
 
 <Callout variant="tip">
-  **Dica:** Quase todas as configurações de moderação, como AutoMod e Logs, podem ser ajustadas visualmente pela nossa [Dashboard](https://shirobot.xyz/dashboard).
+  **Dica:** Quase todas as configurações de moderação, como verificações, apelações de ban, blacklist e logs, podem ser ajustadas visualmente pela nossa [Dashboard](https://shirobot.xyz/dashboard).
 </Callout>
 
 <Callout variant="warning">
@@ -711,33 +711,8 @@ Configure um canal invisível para atuar como "isca" e capturar bots de spam, ra
 *   **Notificação DM:** Texto personalizado que a Shiro enviará para a conta banida (aparecerá também no Registro de Auditoria do Discord).
 
 <Callout variant="warning">
-  **Imunidade Automática:** Usuários com permissão de \`Administrador\` e todos os cargos que você adicionou na lista de "Cargos Ignorados" do AutoMod são naturalmente imunes à armadilha, para evitar acidentes pela sua staff.
+  **Imunidade Automática:** Usuários com permissão de \`Administrador\` são completamente imunes aos canais armadilha.
 </Callout>
-`,
-
-  automod: `
-# Auto Moderação
-
-Mantenha seu servidor protegido 24/7 com o sistema de AutoMod inteligente da Shiro. Esta ferramenta age instantaneamente ao detectar comportamentos nocivos, garantindo que a ordem seja mantida mesmo sem moderadores online.
-
-![AutoMod](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/automod.png)
-
-## Filtros de Conteúdo
-Configure regras específicas pa ra manter o chat limpo:
-*   **Filtro de Links:** Bloqueie links suspeitos, phishing ou URLs de convite de outros servidores.
-*   **Controle de CAPS Lock:** Evite que usuários gritem no chat deletando mensagens com excesso de letras maiúsculas.
-*   **Anti-Spam:** Detecte e remova mensagens repetitivas ou enviadas em alta velocidade por um mesmo usuário.
-*   **Menções Excessivas:** Bloqueie mensagens que tentam "pingar" muitos membros ou cargos de uma só vez.
-
-## Sistema de Punições (Escalonamento)
-Você não precisa apenas deletar a mensagem; pode configurar consequências reais:
-1.  **Limite de Infrações:** Defina quantas vezes um usuário pode quebrar uma regra antes da punição (ex: 3 avisos).
-2.  **Ação Automática:** Escolha entre aplicar um **Aviso (Warn)** automático ou aplicar um **Silenciamento (Timeout)** de duração personalizada.
-
-## Exceções e Ajustes
-Nem todo canal ou cargo precisa seguir as mesmas regras rígidas:
-*   **Canais Ignorados:** Adicione canais onde o AutoMod não deve agir (ex: canais de arte ou bot-commands).
-*   **Cargos Imunes:** Defina cargos que nunca serão afetados pelos filtros (geralmente staff e membros confiáveis).
 `,
 
   'verificacao-dash': `
@@ -785,7 +760,6 @@ Você pode adicionar termos à Blacklist com dois modos de detecção:
 ## O que acontece ao detectar?
 1. **Deleção Instantânea:** A mensagem é removida antes mesmo que outros membros a vejam.
 2. **Registro nos Logs:** A Shiro envia um alerta para o seu canal de logs configurado, informando quem tentou dizer o termo proibido.
-3. **Punição Automática:** Se configurado na [Auto Moderação](/docs/automod), o usuário pode receber um aviso (Warn) ou ser silenciado automaticamente após repetidas infrações.
 `,
 
   'apelacoes-dash': `

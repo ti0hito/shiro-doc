@@ -49,7 +49,6 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Dashboard - Moderação",
     pages: [
       { title: "Verificação", slug: "verificacao-dash" },
-      { title: "Auto Moderação", slug: "automod" },
       { title: "Canal Armadilha", slug: "honeypot", badge: "novo" },
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
