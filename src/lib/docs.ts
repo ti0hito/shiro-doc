@@ -142,6 +142,11 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   usage="/reason_update"
 />
 <CommandCard 
+  name="/webhook" 
+  description="Configura ou deleta o webhook global para integrações de Painéis e Verificação." 
+  usage="/webhook [configurar/deletar]"
+/>
+<CommandCard 
   name="/scheduled_role" 
   description="Agenda cargos para serem dados ou removidos automaticamente." 
   usage="/scheduled_role"
@@ -257,6 +262,10 @@ Sistema de triagem e curadoria para comunidades de criadores e talentos.
 
 ## Solicitar Verificação
 O sistema de verificação da Shiro permite que membros solicitem cargos especiais (como Artista, Streamer ou Editor) preenchendo um formulário interativo diretamente no Discord.
+
+<Callout variant="info">
+  **Novo:** Agora você também pode usar Webhooks para disparar os formulários de verificação através de botões ou menus personalizados!
+</Callout>
 
 ## Comandos de Usuário
 <CommandCard 
@@ -409,7 +418,7 @@ A [Dashboard da Shiro](https://shirobot.xyz/dashboard) é o seu painel de contro
 ![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess.png)
 ![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess_2.png)
 
-## Menu de Sel  eção de Servidor
+## Menu de Seleção de Servidor
 Logo ao entrar, você verá a lista de todos os servidores onde possui permissão administrativa. Além dos seus servidores, o topo da página oferece atalhos rápidos para serviços globais:
 
 1. **Card VTuber:** Abre o editor visual para você criar e personalizar sua identidade VTuber (gratuito para todos).
@@ -521,6 +530,7 @@ O Painel de Ações é uma ferramenta poderosa da Dashboard que permite configur
 *   **Modais Interativos:** Configure painéis de múltipla escolha (Checkboxes) para seleção livre, ou de escolha única (Radio) para que o usuário seja forçado a escolher apenas uma opção (ótimo para cores ou times).
 *   **Restrições de Acesso:** Você pode limitar a interação definindo "Cargos Obrigatórios". Se ativado, apenas membros com aquele cargo poderão clicar no botão e abrir o painel.
 *   **Integração Simples:** Todo o layout e opções dos cargos são configurados e salvos pela aba visual na Dashboard.
+*   **Suporte a Webhooks:** Agora você pode disparar painéis de ações a partir de mensagens personalizadas criadas em ferramentas como o [discord.builders](https://discord.builders/). Basta vincular o customId do seu botão ou menu ao ID de gatilho do painel na Dashboard.
 
 ![Actions](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/actions.png)
 
@@ -721,8 +731,8 @@ Configure um canal invisível para atuar como "isca" e capturar bots de spam, ra
 Gerencie candidaturas de artistas, desenvolvedores e outros talentos de forma profissional e centralizada pela Dashboard.
 
 <Callout variant="tip">
-  Esta aba é sincronizada em tempo real com o comando \`/setup_verificar\` no Discord. Você pode analisar portfólios, ver redes sociais e aprovar membros sem precisar sair do navegador!
-</Callout>
+  Esta aba permite que você analiseos, vejaos, veja redes sociais e aprove membros para receber cargos/tags especificas conforme as categorias pré setadas na Dashboard. (Exemplo: Artista, Editor, Streamer, etc.)
+ </Callout>
 
 Diferente de um simples captcha, o sistema de Verificação da Shiro é focado em **curadoria de talentos** e organização de comunidades artísticas ou de nicho.
 
@@ -741,6 +751,11 @@ Você pode processar cada pedido com um clique:
 
 ## Configuração do Painel
 Lembre-se que o visual do painel que aparece no Discord (título, banner e canal) deve ser configurado na aba **Canais & Cargos** na Dashboard. O painel final é enviado ao canal de sua escolha para que os membros possam clicar e iniciar o processo.
+
+<Callout variant="info">
+  Em breve - Novo sistema de verificação com categorias personalizáveis, com campos personalizados para cada categoria.
+  </Callout>
+
 `,
 
   'blacklist-dash': `
@@ -993,7 +1008,7 @@ Acompanhe as últimas novidades, correções de bugs e funcionalidades adicionad
 *   **Mercado de Revenda:** O sistema de Loja agora permite configurar a revenda de itens e cargos de forma muito mais robusta.
 *   **Card Studio (VTuber):** Novo editor web drag-and-drop para criação de identidades visuais na Dashboard.
 `,
-};
+}
 
 export function getDocContent(slug: string): string {
   return DOCS[slug] ?? `# Página não encontrada\nO conteúdo para **${slug}** ainda não está disponível.`;
