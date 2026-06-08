@@ -1019,12 +1019,13 @@ Acompanhe as últimas novidades, correções de bugs e funcionalidades adicionad
   **Nota:** As atualizações menores e correções de bugs não são postadas ao publico, apenas atualizações importantes são postadas.
 </Callout>
 
-## Atualização Geral 14/05/2026
-*   **Nova Dashboard:** Totalmente reescrita, mais rápida e com um design premium focado em UX.
-*   **Documentação Oficial:** Lançamento deste portal completo de documentação.
-*   **Sistema VIP:** Lançamento dos níveis de assinatura (Espresso, Cappuccino e Macchiato) com recompensas globais.
-*   **Mercado de Revenda:** O sistema de Loja agora permite configurar a revenda de itens e cargos de forma muito mais robusta.
-*   **Card Studio (VTuber):** Novo editor web drag-and-drop para criação de identidades visuais na Dashboard.
+## Atualização - Remoções e Adições 08/05/2026
+*   **Honeypot Chat e Call:** Sistema de canais armadilhas em chat de call e chat de texto com aleatoriedade de nomes para evitar selfbots.
+*   **Remoção dos Relatórios:** Remoção completa dos relatórios de punição.
+*   **Remoção do Sistema de Comissões:** Remoção do sistema de comissões antigo.
+*   **Nekomura Tickets:** Sistema de tickets personalizados da Shiro adicionado.
+*   **Resgate automatico por XP:** Resgate automatico de recompensas por xp ao invés de moedas.
+*   **Atualização no Header e Footer:** Adição do redirecionamento para os tickets no Header e no Footer.
 `,
 }
 
