@@ -52,7 +52,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Canal Armadilha", slug: "honeypot", badge: "novo" },
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
-      { title: "Avisos & Relatórios", slug: "warns-dash" },
+      { title: "Avisos", slug: "warns-dash" },
     ],
   },
   {

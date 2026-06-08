@@ -127,11 +127,6 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   usage="/clear todos quantidade: 50"
 />
 <CommandCard 
-  name="/relatorio" 
-  description="Inicia um relatório formal de punição." 
-  usage="/relatorio"
-/>
-<CommandCard 
   name="/baninfo" 
   description="Consulta detalhes de um banimento específico." 
   usage="/baninfo"
@@ -799,7 +794,7 @@ O sistema de apelações da Shiro centraliza todas as solicitações em uma fila
 `,
 
   'warns-dash': `
-# Avisos & Relatórios
+# Avisos
 
 Mantenha um controle total sobre o comportamento da comunidade e o histórico de ações da sua staff.
 
@@ -810,14 +805,6 @@ Nesta seção, você pode visualizar todos os avisos ativos que membros do servi
 *   **Histórico por Membro:** Busque por um usuário específico para ver todas as advertências acumuladas ao longo do tempo.
 
 ![Warns](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/warns.png)
-
-## Central de Relatórios (Reports)
-Quando um membro utiliza o sistema de denúncias da Shiro (clicando com o botão direito em uma mensagem ou via comando), a denúncia cai instantaneamente aqui.
-
-*   **Evidências:** A Shiro anexa automaticamente o conteúdo da mensagem denunciada e o contexto para que a staff possa analisar sem precisar procurar no chat.
-*   **Resolução:** Marque denúncias como "Resolvidas" ou "Ignoradas" para manter a fila limpa.
-
-![Relatórios](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/relatorios.png)
 `,
 
   'agendamentos-dash': `
