@@ -695,25 +695,56 @@ Na aba de configurações, administradores têm acesso a ferramentas destrutivas
 `,
 
   honeypot: `
-# Honeypot (Canal Armadilha)
+# Honeypot (Canais Armadilha)
 
-Configure um canal invisível para atuar como "isca" e capturar bots de spam, raiders ou contas falsas automaticamente.
+Configure armadilhas em canais de texto ou voz para punir automaticamente selfbots e usuários maliciosos.
 
 <Callout variant="tip">
-  Esta é uma das defesas mais eficazes contra bots de divulgação que entram no servidor, interagem com canais desprotegidos e enviam DMs maliciosas para seus membros.
+  Esta é uma das defesas mais eficazes contra bots de divulgação (selfbots) que entram no servidor para enviar DMs maliciosas para seus membros.
 </Callout>
 
-![Honeypot Channel](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/honeypot.png)
+![Honeypot Channel](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/honeypot_system.png)
 
 ## Como funciona?
-1. **O Canal Isca:** Você cria um canal de texto no seu servidor e restringe a permissão de \`Visualizar Canal\` e \`Ler Histórico\` para o cargo @everyone.
-2. **A Armadilha:** Na Dashboard, você seleciona este canal oculto na aba **Honeypot**.
-3. **A Captura:** Qualquer conta que enviar uma mensagem nesse canal será imediatamente punida. (Como membros normais não conseguem ver o canal, qualquer envio de mensagem indica uso de scripts maliciosos ou clientes não-oficiais de self-bot).
+Diferente do que muitos pensam, os selfbots só interagem com canais que eles conseguem **visualizar**. Por isso, a estratégia da Shiro é criar uma "isca" atraente que capture apenas usuários com intenções maliciosas ou contas automatizadas.
+
+### 1. Honeypot Chat (Texto)
+*   **O Canal:** Você cria um canal de texto específico para servir de armadilha.
+*   **A Isca:** O canal deve ser visível para os membros, mas com um aviso claro (enviado por um moderador ou dono) dizendo para **NÃO** enviar mensagens ali.
+*   **A Captura:** Selfbots ignoram avisos e tentam postar em qualquer canal visível. Ao enviar uma mensagem, a punição é imediata.
+
+### 2. Honeypot Call (Voz)
+*   **O Canal:** Monitora o chat de texto integrado aos canais de voz.
+*   **A Isca:** Assim como no chat, recomenda-se deixar um aviso no chat da call para que membros legítimos não digitem ali.
+*   **A Captura:** Bots que entram em calls para spammar o chat de voz serão capturados assim que enviarem a primeira mensagem.
+
+## Como configurar?
+
+### 1. Preparação do Canal
+Para que a armadilha funcione, o canal precisa ter as permissões corretas para que o bot malicioso consiga "morder a isca":
+
+*   **Para Honeypot Chat:** O canal de texto deve permitir que o cargo @everyone possa:
+    - \`Visualizar Canal\`
+    - \`Enviar Mensagens\`
+    - \`Inserir Links\` e \`Anexar Arquivos\` (selfbots costumam usar esses recursos).
+*   **Para Honeypot Call:** O canal de voz deve permitir que o cargo @everyone possa:
+    - \`Todas as Permissões Anteriores\`
+    - \`Conectar\` (essencial para que o bot consiga acessar o chat da call).
+    - \`Enviar Mensagens no Chat de Voz\`.
+
+### 2. O Aviso de Segurança (Crucial)
+Para evitar que membros legítimos caiam na armadilha por acidente:
+1. Crie o canal de Honeypot.
+2. Como Dono ou Moderador, envie uma mensagem fixada ou bem visível dizendo: **"CANAL DE TESTE/SEGURANÇA: NÃO ENVIE MENSAGENS AQUI. O DESCUMPRIMENTO RESULTARÁ EM BANIMENTO AUTOMÁTICO."**
+3. Ative o Honeypot na Dashboard da Shiro.
+
+### 3. Ativação na Dashboard
+Na aba **Honeypot**, selecione os canais preparados e ative as chaves correspondentes (Chat ou Call).
 
 ## Configurações Principais
 *   **Punição:** Escolha entre **Ban** (Recomendado), **Kick** ou **Timeout de 24h**.
 *   **Limpeza de Histórico:** Ao optar pelo **Ban**, você pode configurar para que todas as mensagens daquele bot no servidor (retroativas de 1h a 7 dias) sejam excluídas magicamente.
-*   **Notificação DM:** Texto personalizado que a Shiro enviará para a conta banida (aparecerá também no Registro de Auditoria do Discord).
+*   **Notificação DM:** Texto personalizado que a Shiro enviará para a conta banida.
 
 <Callout variant="warning">
   **Imunidade Automática:** Usuários com permissão de \`Administrador\` são completamente imunes aos canais armadilha.
