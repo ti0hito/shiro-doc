@@ -11,7 +11,7 @@ A **Shiro** é uma bot multifuncional para Discord focada em comunidades de cria
   A Shiro foi desenhada para ser leve, poderosa, completa e focada na experiência do usuário.
 </Callout>
 
-[![Shiro Preview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/home_doc.png)](https://shirobot.xyz)
+[![Shiro Preview](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/docs/home_update.png)](https://shirobot.xyz)
 
 ## Como navegar nesta documentação
 Use a barra lateral à esquerda para navegar entre as seções.
@@ -78,6 +78,21 @@ Gerencie seu servidor com precisão e configure as regras do bot.
 
 ## Punições e Gestão
 <CommandCard 
+  name="/configurar" 
+  description="Envia para o painel de configurações gerais da Shiro" 
+  usage="/configurar"
+/>
+<CommandCard 
+  name="/honeypot" 
+  description="Envia para o painel de configuração dos canais armadilha/honeypot" 
+  usage="/honeypot"
+/>
+<CommandCard 
+  name="/docs" 
+  description="Acesse a documentação oficial da Shiro" 
+  usage="/docs"
+/>
+<CommandCard 
   name="/ban" 
   description="Bane um usuário do servidor." 
   usage="/ban usuario: @Hito motivo: Spam"
@@ -93,26 +108,29 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   usage="/kick usuario: @Membro"
 />
 <CommandCard 
-  name="/timeout add" 
+  name="/castigar add" 
   description="Silencia um usuário temporariamente." 
-  usage="/timeout add usuario: @Membro duracao: 60"
+  usage="/castigar add usuario: @Membro duracao: 60"
+/>
+<CommandCard 
+  name="/castigar remove" 
+  description="Remove o silenciamento de um usuário." 
+  usage="/castigar remove usuario: @Membro"
+/>
+<CommandCard 
+  name="/warn" 
+  description="Gerencia os avisos (advertências) de um usuário." 
+  usage="/warn usuario: @Membro"
 />
 <CommandCard 
   name="/warns" 
-  description="Gerencia os avisos (advertências) de um usuário." 
+  description="Exibe a lista de avisos de um usuário." 
   usage="/warns usuario: @Membro"
 />
-
-## Configurações do Bot
 <CommandCard 
-  name="/server_config" 
-  description="Configurações gerais do Shiro no servidor atual." 
-  usage="/server_config"
-/>
-<CommandCard 
-  name="/lockdown" 
-  description="Sistema de modo pânico para trancar canais." 
-  usage="/lockdown"
+  name="/warn limpar" 
+  description="Remove os avisos de um usuário." 
+  usage="/warn limpar usuario: @Membro"
 />
 <CommandCard 
   name="/blacklist" 
@@ -132,14 +150,9 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   usage="/baninfo"
 />
 <CommandCard 
-  name="/reason_update" 
-  description="Altera o motivo de uma punição já aplicada." 
-  usage="/reason_update"
-/>
-<CommandCard 
   name="/webhook" 
   description="Configura ou deleta o webhook global para integrações de Painéis e Verificação." 
-  usage="/webhook [configurar/deletar]"
+  usage="/webhook [add/delete/listar]"
 />
 <CommandCard 
   name="/scheduled_role" 
@@ -216,6 +229,16 @@ Sistema de economia dinâmica e recompensas.
   description="Verifica suas últimas compras e itens temporários." 
   usage="/loja historico"
 />
+<CommandCard 
+  name="/loja abrir-mao" 
+  description="Coloca um item seu à venda." 
+  usage="/loja abrir-mao"
+/>
+<CommandCard 
+  name="/loja abrir-mao" 
+  description="Coloca um item seu à venda." 
+  usage="/loja abrir-mao"
+/>
 
 ## Carteira & Saldo
 <CommandCard 
@@ -289,7 +312,7 @@ Comandos essenciais de ajuda, identidade e status.
 ## Identidade & Ajuda
 <CommandCard 
   name="/help" 
-  description="Central de Ajuda oficial do Shiro." 
+  description="Central de Ajuda oficial da Shiro." 
   usage="/help"
 />
 <CommandCard 
@@ -326,14 +349,24 @@ Comandos essenciais de ajuda, identidade e status.
 />
 <CommandCard 
   name="/vote" 
-  description="Apoie o Shiro votando no Top.gg!" 
+  description="Apoie a Shiro votando no Top.gg!" 
   usage="/vote"
 />
-
-## Outros Comandos
-*   \`/actions\` — Painel de ações interativo.
-*   \`/thanks\` — Créditos dos desenvolvedores.
-*   \`/terms\` — Termos de Uso e Privacidade.
+<CommandCard 
+  name="/thanks" 
+  description="Agradecimentos da equipe Nekomura."
+  usage="/thanks"
+/>
+<CommandCard 
+  name="/terms" 
+  description="Termos de Uso e Privacidade da Shiro." 
+  usage="/terms"
+/>
+<CommandCard 
+  name="/actions" 
+  description="Painel de ações interativo" 
+  usage="/actions"
+/>
 `,
 
   arte: `
@@ -410,8 +443,8 @@ Diferente de comandos de texto complicados, a Shiro oferece uma interface de "ar
 
 A [Dashboard da Shiro](https://shirobot.xyz/dashboard) é o seu painel de controle central. Para acessar, basta fazer login com sua conta do Discord.
 
-![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess.png)
-![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/how_to_acess_2.png)
+![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/docs/how_to_acess_update.png)
+![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/docs/how_to_acess_update2.png)
 
 ## Menu de Seleção de Servidor
 Logo ao entrar, você verá a lista de todos os servidores onde possui permissão administrativa. Além dos seus servidores, o topo da página oferece atalhos rápidos para serviços globais:
