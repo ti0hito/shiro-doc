@@ -137,6 +137,21 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   description="Gerencia palavras e frases proibidas no servidor." 
   usage="/blacklist"
 />
+<CommandCard 
+  name="/banlist" 
+  description="Lista todos os usuários banidos e permite desbanir facilmente." 
+  usage="/banlist"
+/>
+<CommandCard 
+  name="/analytics" 
+  description="Exibe as estatísticas e gráficos de atividade do servidor." 
+  usage="/analytics"
+/>
+<CommandCard 
+  name="/dm" 
+  description="Envia uma mensagem direta (DM) para um membro." 
+  usage="/dm usuario: @Membro"
+/>
 
 ## Ferramentas de Staff
 <CommandCard 
@@ -163,6 +178,11 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   name="/timed_role" 
   description="Sistema de cargos temporários avançados." 
   usage="/timed_role"
+/>
+<CommandCard 
+  name="/ticket_setup" 
+  description="Configura o painel de atendimento (Tickets)." 
+  usage="/ticket_setup"
 />
 `,
 
@@ -192,11 +212,16 @@ Recompense a atividade dos seus membros com experiência e moedas.
   usage="/xp ranking"
 />
 
-## Missões (Quests)
+## Missões e Daily
 <CommandCard 
   name="/quests" 
   description="Veja suas missões diárias e semanais disponíveis." 
   usage="/quests"
+/>
+<CommandCard 
+  name="/daily" 
+  description="Resgate sua recompensa diária de moedas." 
+  usage="/daily"
 />
 
 <Callout variant="tip">
@@ -233,6 +258,11 @@ Sistema de economia dinâmica e recompensas.
   name="/loja abrir-mao" 
   description="Coloca um item seu à venda." 
   usage="/loja abrir-mao"
+/>
+<CommandCard 
+  name="/market" 
+  description="Explora o mercado global para comprar e vender itens entre usuários." 
+  usage="/market"
 />
 <CommandCard 
   name="/loja abrir-mao" 
@@ -329,6 +359,50 @@ Comandos essenciais de ajuda, identidade e status.
   name="/perfil" 
   description="Ver o perfil detalhado de um usuário na Shiro." 
   usage="/perfil [usuario]"
+/>
+
+## Comunidade & Interação
+<CommandCard 
+  name="/team" 
+  description="Gerencie sua equipe/time no servidor." 
+  usage="/team"
+/>
+<CommandCard 
+  name="/apelar" 
+  description="Envia uma apelação de banimento para a moderação." 
+  usage="/apelar"
+/>
+<CommandCard 
+  name="/report_abuse" 
+  description="Denuncia um usuário por abuso ou quebra de regras." 
+  usage="/report_abuse"
+/>
+<CommandCard 
+  name="/bug_report" 
+  description="Reporta um bug encontrado na Shiro para os desenvolvedores." 
+  usage="/bug_report"
+/>
+
+## Informação & Diversão
+<CommandCard 
+  name="/apod" 
+  description="Mostra a Foto Astronômica do Dia da NASA." 
+  usage="/apod"
+/>
+<CommandCard 
+  name="/steam" 
+  description="Busca informações de um jogo na Steam." 
+  usage="/steam jogo: nome_do_jogo"
+/>
+<CommandCard 
+  name="/resumo_server" 
+  description="Mostra um resumo de IA das conversas do servidor." 
+  usage="/resumo_server"
+/>
+<CommandCard 
+  name="/server_stats_image" 
+  description="Gera uma imagem com as estatísticas do servidor." 
+  usage="/server_stats_image"
 />
 
 ## Status e Suporte
