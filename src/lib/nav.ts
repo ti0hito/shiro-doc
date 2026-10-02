@@ -49,7 +49,9 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Dashboard - Moderação",
     pages: [
       { title: "Verificação", slug: "verificacao-dash" },
-      { title: "Canal Armadilha", slug: "honeypot", badge: "novo" },
+      { title: "Restrição de Cargos", slug: "restricao-cargos-dash", badge: "novo" },
+      { title: "Anti-Selfbot", slug: "anti-selfbot", badge: "novo" },
+      { title: "Canal Armadilha", slug: "honeypot" },
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
       { title: "Avisos", slug: "warns-dash" },
@@ -60,10 +62,12 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Dashboard - Comunidade",
     pages: [
       { title: "Progresso de XP", slug: "sistema-xp" },
-      { title: "Cargos Agendados", slug: "agendamentos-dash" },
+      { title: "Cargo por Agendamento", slug: "agendamentos-dash" },
       { title: "Voz Dinâmica", slug: "dynamicvoice-dash" },
-      { title: "Alertas de Live", slug: "livealerts-dash", badge: "novo" },
-      { title: "Arena de Times", slug: "arena-times", badge: "novo" },
+      { title: "Alertas de Live", slug: "livealerts-dash" },
+      { title: "Sorteios", slug: "sorteios-dash", badge: "novo" },
+      { title: "Feedbacks", slug: "feedbacks-dash", badge: "novo" },
+      { title: "Tickets", slug: "tickets-dash", badge: "novo" },
     ],
   },
   {
@@ -71,7 +75,7 @@ export const NAV_GROUPS: NavGroup[] = [
     title: "Dashboard - Economia",
     pages: [
       { title: "Loja de Pontos", slug: "loja-dash" },
-      { title: "Card VTuber", slug: "card-vtuber" },
+      { title: "Recompensas VIP", slug: "vip-rewards-dash", badge: "novo" },
       { title: "Shiro VIP", slug: "premium", badge: "premium" },
     ],
   },

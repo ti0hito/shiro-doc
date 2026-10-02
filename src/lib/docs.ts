@@ -5,7 +5,7 @@ const DOCS: Record<string, string> = {
   intro: `
 # Bem-vindo à Documentação da Shiro
 
-A **Shiro** é uma bot multifuncional para Discord focada em comunidades de criadores de conteúdo, com moderação avançada, sistema de XP, loja de cargos, VTuber card e muito mais.
+A **Shiro** é uma bot multifuncional para Discord focada em comunidades de criadores de conteúdo, com moderação avançada, Anti-Selfbot, sistema de XP, loja de cargos, sorteios e muito mais.
 
 <Callout variant="tip">
   A Shiro foi desenhada para ser leve, poderosa, completa e focada na experiência do usuário.
@@ -54,12 +54,13 @@ Para que a Shiro consiga gerenciar cargos (como dar cargos de verificação ou r
 Após adicionar o bot, você pode começar a configurar as funcionalidades principais:
 
 *   **Via Dashboard (Recomendado):** Acesse [shirobot.xyz/dashboard](https://shirobot.xyz/dashboard), faça login e selecione seu servidor.
-*   **Via Comandos:** Use o comando \`/config painel\` para abrir o menu de configuração interativo direto no Discord.
+*   **Via Comandos:** Use o comando \`/configurar geral\` para receber o atalho direto para a configuração do seu servidor na Dashboard.
 
 ## Próximos Passos
 Agora que a Shiro está no seu servidor, que tal configurar os módulos principais?
 *   [Configurar Verificação de Artistas](/docs/verificacao-dash)
 *   [Ativar Sistema de XP](/docs/sistema-xp)
+*   [Configurar Anti-Selfbot](/docs/anti-selfbot)
 *   [Configurar Canal Armadilha](/docs/honeypot)
 `,
 
@@ -69,120 +70,245 @@ Agora que a Shiro está no seu servidor, que tal configurar os módulos principa
 Gerencie seu servidor com precisão e configure as regras do bot.
 
 <Callout variant="tip">
-  **Dica:** Quase todas as configurações de moderação, como verificações, apelações de ban, blacklist e logs, podem ser ajustadas visualmente pela nossa [Dashboard](https://shirobot.xyz/dashboard).
+  **Dica:** Quase todas as configurações de moderação, como verificações, apelações de ban, blacklist, Anti-Selfbot e logs, podem ser ajustadas visualmente pela nossa [Dashboard](https://shirobot.xyz/dashboard).
 </Callout>
 
 <Callout variant="warning">
-  **Atenção Staff:** Quase todos os comandos nesta seção exigem permissões administrativas (Gerenciar Servidor ou Administrador).
+  **Atenção Staff:** Quase todos os comandos nesta seção exigem permissões administrativas ou de moderação (Banir, Expulsar, Moderar Membros, Gerenciar Mensagens, Gerenciar Cargos ou Administrador).
 </Callout>
 
-## Punições e Gestão
+## Atalhos para a Dashboard
 <CommandCard 
-  name="/configurar" 
-  description="Envia para o painel de configurações gerais da Shiro" 
-  usage="/configurar"
+  name="/configurar geral" 
+  description="Atalho para a configuração geral do servidor na Dashboard." 
+  usage="/configurar geral"
+/>
+<CommandCard 
+  name="/configurar verificacao" 
+  description="Atalho para a configuração das Verificações na Dashboard." 
+  usage="/configurar verificacao"
+/>
+<CommandCard 
+  name="/configurar feedback" 
+  description="Atalho para a configuração do Sistema de Feedbacks na Dashboard." 
+  usage="/configurar feedback"
+/>
+<CommandCard 
+  name="/analytics" 
+  description="Atalho para as estatísticas e gráficos do servidor na Dashboard." 
+  usage="/analytics"
 />
 <CommandCard 
   name="/honeypot" 
-  description="Envia para o painel de configuração dos canais armadilha/honeypot" 
+  description="Explica o Canal Armadilha e leva para a seção Anti-Selfbot da Dashboard." 
   usage="/honeypot"
 />
 <CommandCard 
   name="/docs" 
-  description="Acesse a documentação oficial da Shiro" 
+  description="Acesse a documentação oficial da Shiro." 
   usage="/docs"
 />
+
+## Punições
 <CommandCard 
   name="/ban" 
-  description="Bane um usuário do servidor." 
-  usage="/ban usuario: @Hito motivo: Spam"
+  description="Bane um ou mais usuários. Com silent, não avisa no canal; com clear, apaga as mensagens recentes." 
+  usage="/ban usuarios: @Membro motivo: Spam silent: false clear: true"
 />
 <CommandCard 
   name="/unban" 
-  description="Remove o banimento de um usuário via ID." 
-  usage="/unban usuario: ID_DO_USUARIO"
+  description="Remove o banimento de um ou mais usuários pelo ID." 
+  usage="/unban usuario_id: ID_DO_USUARIO motivo: Apelação aceita"
 />
 <CommandCard 
   name="/kick" 
-  description="Expulsa um usuário do servidor." 
-  usage="/kick usuario: @Membro"
+  description="Expulsa um ou mais usuários do servidor." 
+  usage="/kick usuarios: @Membro motivo: Flood"
 />
 <CommandCard 
-  name="/castigar add" 
-  description="Silencia um usuário temporariamente." 
-  usage="/castigar add usuario: @Membro duracao: 60"
+  name="/mute aplicar" 
+  description="Silencia (castigo) um ou mais usuários por um tempo." 
+  usage="/mute aplicar usuarios: @Membro tempo: 4 horas motivo: Flood"
 />
 <CommandCard 
-  name="/castigar remove" 
-  description="Remove o silenciamento de um usuário." 
-  usage="/castigar remove usuario: @Membro"
+  name="/mute remover" 
+  description="Remove o silenciamento de um ou mais usuários." 
+  usage="/mute remover usuarios: @Membro"
+/>
+
+## Avisos (Warns)
+<CommandCard 
+  name="/warn add" 
+  description="Aplica um aviso a um ou mais usuários. As punições automáticas por quantidade de avisos são configuradas na Dashboard." 
+  usage="/warn add usuarios: @Membro motivo: Desrespeito"
 />
 <CommandCard 
-  name="/warn" 
-  description="Gerencia os avisos (advertências) de um usuário." 
-  usage="/warn usuario: @Membro"
+  name="/warn ver" 
+  description="Mostra todos os avisos de um usuário." 
+  usage="/warn ver usuario: @Membro"
 />
 <CommandCard 
-  name="/warns" 
-  description="Exibe a lista de avisos de um usuário." 
-  usage="/warns usuario: @Membro"
+  name="/warn edit" 
+  description="Edita o motivo de um aviso específico." 
+  usage="/warn edit usuario: @Membro indice: 1 novo_motivo: Spam"
 />
 <CommandCard 
-  name="/warn limpar" 
-  description="Remove os avisos de um usuário." 
-  usage="/warn limpar usuario: @Membro"
+  name="/warn remove" 
+  description="Remove um aviso específico." 
+  usage="/warn remove usuario: @Membro indice: 1"
 />
 <CommandCard 
-  name="/blacklist" 
-  description="Gerencia palavras e frases proibidas no servidor." 
-  usage="/blacklist"
+  name="/warn clear" 
+  description="Remove todos os avisos de um ou mais usuários." 
+  usage="/warn clear usuarios: @Membro"
+/>
+
+## Consultas
+<CommandCard 
+  name="/baninfo" 
+  description="Consulta os detalhes de um banimento (motivo, autor e data)." 
+  usage="/baninfo usuario: ID_DO_USUARIO"
 />
 <CommandCard 
   name="/banlist" 
-  description="Lista todos os usuários banidos e permite desbanir facilmente." 
+  description="Gera uma lista de todos os usuários banidos do servidor." 
   usage="/banlist"
 />
+
+## Blacklist de Palavras
 <CommandCard 
-  name="/analytics" 
-  description="Exibe as estatísticas e gráficos de atividade do servidor." 
-  usage="/analytics"
+  name="/blacklist adicionar" 
+  description="Adiciona uma palavra ou frase à blacklist." 
+  usage="/blacklist adicionar texto: palavra"
 />
 <CommandCard 
-  name="/dm" 
-  description="Envia uma mensagem direta (DM) para um membro." 
-  usage="/dm usuario: @Membro"
+  name="/blacklist remover" 
+  description="Remove uma palavra ou frase da blacklist." 
+  usage="/blacklist remover texto: palavra"
+/>
+<CommandCard 
+  name="/blacklist listar" 
+  description="Lista todas as palavras e frases bloqueadas." 
+  usage="/blacklist listar"
+/>
+<CommandCard 
+  name="/blacklist configurar" 
+  description="Define o canal onde a Shiro avisa a moderação." 
+  usage="/blacklist configurar canal: #mod-logs"
+/>
+<CommandCard 
+  name="/blacklist habilitar" 
+  description="Liga ou desliga a blacklist." 
+  usage="/blacklist habilitar ativo: true"
+/>
+<CommandCard 
+  name="/blacklist ver" 
+  description="Mostra as configurações atuais da blacklist." 
+  usage="/blacklist ver"
 />
 
 ## Ferramentas de Staff
 <CommandCard 
-  name="/clear" 
-  description="Limpeza em massa de mensagens." 
+  name="/clear todos" 
+  description="Apaga as últimas mensagens do canal." 
   usage="/clear todos quantidade: 50"
 />
 <CommandCard 
-  name="/baninfo" 
-  description="Consulta detalhes de um banimento específico." 
-  usage="/baninfo"
+  name="/clear usuario" 
+  description="Apaga as mensagens de um usuário específico." 
+  usage="/clear usuario usuario: @Membro quantidade: 20"
 />
 <CommandCard 
-  name="/webhook" 
-  description="Configura ou deleta o webhook global para integrações de Painéis e Verificação." 
-  usage="/webhook [add/delete/listar]"
+  name="/clear bots" 
+  description="Apaga apenas as mensagens de bots." 
+  usage="/clear bots quantidade: 30"
 />
 <CommandCard 
-  name="/scheduled_role" 
-  description="Agenda cargos para serem dados ou removidos automaticamente." 
-  usage="/scheduled_role"
+  name="/dm" 
+  description="Envia uma mensagem oficial da Shiro na DM de um ou mais membros, com título, cor e imagem opcionais." 
+  usage="/dm usuario: @Membro mensagem: Olá!"
 />
 <CommandCard 
-  name="/timed_role" 
-  description="Sistema de cargos temporários avançados." 
-  usage="/timed_role"
+  name="/webhook create" 
+  description="Cria ou atualiza o webhook global do servidor (usado por Painéis de Ação, Verificação e Sorteios)." 
+  usage="/webhook create channel: #canal"
 />
 <CommandCard 
-  name="/ticket_setup" 
-  description="Configura o painel de atendimento (Tickets)." 
-  usage="/ticket_setup"
+  name="/webhook listar" 
+  description="Lista os webhooks configurados no servidor e suas URLs." 
+  usage="/webhook listar"
+/>
+<CommandCard 
+  name="/webhook delete" 
+  description="Apaga o webhook global do servidor." 
+  usage="/webhook delete"
+/>
+<CommandCard 
+  name="/timed_role adicionar" 
+  description="Dá um cargo temporário a um usuário (duração em horas)." 
+  usage="/timed_role adicionar usuario: @Membro cargo: @Evento duracao: 168"
+/>
+<CommandCard 
+  name="/timed_role estender" 
+  description="Estende a duração de um cargo temporário." 
+  usage="/timed_role estender usuario: @Membro cargo: @Evento horas: 24"
+/>
+<CommandCard 
+  name="/timed_role remover" 
+  description="Remove um cargo temporário antes do prazo." 
+  usage="/timed_role remover usuario: @Membro cargo: @Evento"
+/>
+<CommandCard 
+  name="/timed_role listar" 
+  description="Lista os cargos temporários ativos." 
+  usage="/timed_role listar"
+/>
+<CommandCard 
+  name="/cargo-agendamento criar" 
+  description="Cria um painel onde membros agendam o recebimento de um cargo após alguns dias." 
+  usage="/cargo-agendamento criar cargo: @Fundador titulo: Resgate dias: 7"
+/>
+<CommandCard 
+  name="/cargo-agendamento listar" 
+  description="Lista os painéis de agendamento do servidor." 
+  usage="/cargo-agendamento listar"
+/>
+<CommandCard 
+  name="/cargo-agendamento remover" 
+  description="Remove um painel de agendamento." 
+  usage="/cargo-agendamento remover painel-id: ID_DO_PAINEL"
+/>
+<CommandCard 
+  name="/ticket-setup" 
+  description="Explica como configurar o sistema de tickets da Shiro." 
+  usage="/ticket-setup"
+/>
+
+## Apelações de Ban (Staff)
+<CommandCard 
+  name="/apelar revisar" 
+  description="Mostra as apelações pendentes." 
+  usage="/apelar revisar"
+/>
+<CommandCard 
+  name="/apelar aprovar" 
+  description="Aprova uma apelação e desbane o usuário." 
+  usage="/apelar aprovar id: ID_DA_APELACAO"
+/>
+<CommandCard 
+  name="/apelar recusar" 
+  description="Recusa uma apelação informando o motivo." 
+  usage="/apelar recusar id: ID_DA_APELACAO motivo: Reincidência"
+/>
+<CommandCard 
+  name="/apelar toggle" 
+  description="Liga ou desliga o sistema de apelação." 
+  usage="/apelar toggle ativar: true"
+/>
+<CommandCard 
+  name="/apelar config_canal" 
+  description="Define o canal que recebe as apelações." 
+  usage="/apelar config_canal canal: #apelacoes"
 />
 `,
 
@@ -198,35 +324,52 @@ Recompense a atividade dos seus membros com experiência e moedas.
 ## Comandos de Nível
 <CommandCard 
   name="/xp ver" 
-  description="Exibe o seu nível atual, XP acumulado e progresso." 
-  usage="/xp ver"
-/>
-<CommandCard 
-  name="/xp ver [usuario]" 
-  description="Verifica o nível e XP de outro membro do servidor." 
+  description="Exibe o seu nível atual, XP acumulado e progresso. Informe um usuário para ver o de outro membro." 
   usage="/xp ver usuario: @Hito"
 />
 <CommandCard 
   name="/xp ranking" 
-  description="Exibe o ranking global de XP do servidor (Top 10)." 
-  usage="/xp ranking"
+  description="Exibe o ranking de XP do servidor, com páginas." 
+  usage="/xp ranking pagina: 2"
 />
 
 ## Missões e Daily
 <CommandCard 
   name="/quests" 
-  description="Veja suas missões diárias e semanais disponíveis." 
+  description="Veja seu progresso nas missões semanais." 
   usage="/quests"
 />
 <CommandCard 
   name="/daily" 
-  description="Resgate sua recompensa diária de moedas." 
+  description="Resgate suas moedas diárias (100 a 350 moedas + bônus de streak)." 
   usage="/daily"
 />
 
 <Callout variant="tip">
   As Quests são ideais para ganhar bônus massivos de XP e moedas rapidamente!
 </Callout>
+
+## Configuração (Staff)
+<CommandCard 
+  name="/xp-config habilitar" 
+  description="Liga ou desliga o sistema de XP no servidor." 
+  usage="/xp-config habilitar ativo: true"
+/>
+<CommandCard 
+  name="/xp-config blacklist" 
+  description="Adiciona ou remove um canal da blacklist de XP." 
+  usage="/xp-config blacklist acao: adicionar canal: #spam"
+/>
+<CommandCard 
+  name="/xp-config notificacao" 
+  description="Configura como as notificações de level up são enviadas." 
+  usage="/xp-config notificacao tipos: canal canal: #level-up"
+/>
+<CommandCard 
+  name="/xp-config ver" 
+  description="Mostra as configurações atuais do sistema de XP." 
+  usage="/xp-config ver"
+/>
 `,
 
   loja: `
@@ -235,13 +378,13 @@ Recompense a atividade dos seus membros com experiência e moedas.
 Sistema de economia dinâmica e recompensas.
 
 <Callout variant="tip">
-  **Dica:** É muito mais fácil gerenciar, adicionar e editar itens da loja pela nossa Dashboard no menu **Loja**.
+  **Dica:** É muito mais fácil gerenciar, adicionar e editar itens da loja pela nossa Dashboard no menu **Loja de Pontos**.
 </Callout>
 
 ## Comandos da Loja
 <CommandCard 
   name="/loja ver" 
-  description="Abre o menu interativo da loja para explorar itens." 
+  description="Abre o menu interativo da loja para explorar os itens." 
   usage="/loja ver"
 />
 <CommandCard 
@@ -251,50 +394,40 @@ Sistema de economia dinâmica e recompensas.
 />
 <CommandCard 
   name="/loja historico" 
-  description="Verifica suas últimas compras e itens temporários." 
+  description="Mostra suas últimas compras e itens temporários." 
   usage="/loja historico"
 />
 <CommandCard 
   name="/loja abrir-mao" 
-  description="Coloca um item seu à venda." 
+  description="Abre mão de um cargo que você comprou." 
   usage="/loja abrir-mao"
 />
 <CommandCard 
   name="/market" 
-  description="Explora o mercado global para comprar e vender itens entre usuários." 
+  description="Abre o Mercado de Revenda de Cargos, onde membros revendem cargos comprados." 
   usage="/market"
-/>
-<CommandCard 
-  name="/loja abrir-mao" 
-  description="Coloca um item seu à venda." 
-  usage="/loja abrir-mao"
 />
 
 ## Carteira & Saldo
 <CommandCard 
   name="/wallet" 
-  description="Ver seu saldo de moedas no servidor e na carteira global." 
-  usage="/wallet"
-/>
-<CommandCard 
-  name="/wallet [usuario]" 
-  description="Verifica o saldo de outro membro do servidor." 
+  description="Mostra seu saldo de moedas no servidor e na carteira global. Informe um usuário para ver o de outro membro." 
   usage="/wallet usuario: @Membro"
 />
 
 <Callout variant="warning">
-  **Atenção Staff:** Os comandos abaixo exigem a permissão de **Gerenciar Cargos**.
+  **Atenção Staff:** Os comandos abaixo são para a moderação do servidor.
 </Callout>
 
-## Gestão da Loja (Staff Only)
+## Gestão da Loja (Staff)
 <CommandCard 
   name="/loja adicionar" 
-  description="Adiciona um novo item ou cargo à loja do servidor." 
-  usage="/loja adicionar nome: VIP custo: 5000 cargo: @VIP"
+  description="Adiciona um item ou cargo à loja, com custo, estoque, tempo de resgate e duração do cargo opcionais." 
+  usage="/loja adicionar nome: VIP descricao: Cargo VIP custo: 5000 cargo: @VIP"
 />
 <CommandCard 
   name="/loja remover" 
-  description="Remove um item existente da loja usando o ID." 
+  description="Remove um item da loja usando o ID." 
   usage="/loja remover item_id: ID_DO_ITEM"
 />
 `,
@@ -312,21 +445,46 @@ Sistema de triagem e curadoria para comunidades de criadores e talentos.
 O sistema de verificação da Shiro permite que membros solicitem cargos especiais (como Artista, Streamer ou Editor) preenchendo um formulário interativo diretamente no Discord.
 
 <Callout variant="info">
-  **Novo:** Agora você também pode usar Webhooks para disparar os formulários de verificação através de botões ou menus personalizados!
+  Você também pode usar Webhooks para disparar os formulários de verificação através de botões ou menus personalizados.
 </Callout>
 
 ## Comandos de Usuário
 <CommandCard 
   name="/verificar" 
-  description="Abre o formulário de verificação (Modal) baseado no painel do canal." 
+  description="Abre o formulário de verificação. O tipo é detectado pelo canal onde o comando foi usado." 
   usage="/verificar"
 />
-
-## Gestão (Staff Only)
 <CommandCard 
-  name="/revisar" 
-  description="Exibe as solicitações pendentes para revisão rápida via Discord." 
-  usage="/revisar"
+  name="/verificar-artista" 
+  description="Abre direto o formulário de verificação de Artista. Também existem: /verificar-desenvolvedor, /verificar-editor, /verificar-musico, /verificar-streamer e /verificar-youtuber." 
+  usage="/verificar-artista"
+/>
+<CommandCard 
+  name="/status" 
+  description="Mostra o status da sua solicitação de verificação." 
+  usage="/status"
+/>
+
+## Gestão (Staff)
+<CommandCard 
+  name="/revisar pendentes" 
+  description="Lista as solicitações pendentes." 
+  usage="/revisar pendentes"
+/>
+<CommandCard 
+  name="/revisar aprovar" 
+  description="Aprova uma solicitação, com nota opcional." 
+  usage="/revisar aprovar id: ID nota: Bem-vindo!"
+/>
+<CommandCard 
+  name="/revisar rejeitar" 
+  description="Rejeita uma solicitação informando o motivo." 
+  usage="/revisar rejeitar id: ID motivo: Portfólio incompleto"
+/>
+<CommandCard 
+  name="/revisar deletar" 
+  description="Apaga uma solicitação." 
+  usage="/revisar deletar id: ID"
 />
 
 <Callout variant="info">
@@ -346,48 +504,53 @@ Comandos essenciais de ajuda, identidade e status.
   usage="/help"
 />
 <CommandCard 
-  name="/vtuber card" 
-  description="Gera a imagem do seu Card de Identidade VTuber." 
-  usage="/vtuber card"
-/>
-<CommandCard 
-  name="/vtuber card [usuario]" 
-  description="Visualiza o Card VTuber de outro membro." 
-  usage="/vtuber card usuario: @Hito"
-/>
-<CommandCard 
   name="/perfil" 
-  description="Ver o perfil detalhado de um usuário na Shiro." 
-  usage="/perfil [usuario]"
+  description="Mostra o perfil detalhado de um usuário na Shiro." 
+  usage="/perfil usuario: @Hito"
+/>
+<CommandCard 
+  name="/actions" 
+  description="Abre um Painel de Ações configurado na Dashboard." 
+  usage="/actions painel: nome_do_painel"
 />
 
-## Comunidade & Interação
+## Comunidade & Denúncias
 <CommandCard 
-  name="/team" 
-  description="Gerencie sua equipe/time no servidor." 
-  usage="/team"
+  name="/report_abuse criar" 
+  description="Denuncia um servidor que esteja usando a Shiro para fins ilícitos." 
+  usage="/report_abuse criar"
 />
 <CommandCard 
-  name="/apelar" 
-  description="Envia uma apelação de banimento para a moderação." 
-  usage="/apelar"
+  name="/report_abuse listar" 
+  description="Lista as denúncias que você fez." 
+  usage="/report_abuse listar"
 />
 <CommandCard 
-  name="/report_abuse" 
-  description="Denuncia um usuário por abuso ou quebra de regras." 
-  usage="/report_abuse"
+  name="/report_abuse status" 
+  description="Mostra o andamento de uma denúncia." 
+  usage="/report_abuse status id: ID_DA_DENUNCIA"
 />
 <CommandCard 
   name="/bug_report" 
-  description="Reporta um bug encontrado na Shiro para os desenvolvedores." 
-  usage="/bug_report"
+  description="Reporta um bug da Shiro para os desenvolvedores, com passos, comportamento esperado e print opcionais." 
+  usage="/bug_report titulo: Erro no /xp descricao: O comando não responde"
 />
 
 ## Informação & Diversão
 <CommandCard 
-  name="/apod" 
+  name="/apod hoje" 
   description="Mostra a Foto Astronômica do Dia da NASA." 
-  usage="/apod"
+  usage="/apod hoje"
+/>
+<CommandCard 
+  name="/apod config" 
+  description="Configura a postagem automática diária do APOD (Staff)." 
+  usage="/apod config canal: #astronomia horario: 09:00"
+/>
+<CommandCard 
+  name="/apod desativar" 
+  description="Desativa a postagem automática do APOD (Staff)." 
+  usage="/apod desativar"
 />
 <CommandCard 
   name="/steam" 
@@ -396,13 +559,18 @@ Comandos essenciais de ajuda, identidade e status.
 />
 <CommandCard 
   name="/resumo_server" 
-  description="Mostra um resumo de IA das conversas do servidor." 
+  description="Mostra um resumo geral do servidor com dados e estatísticas." 
   usage="/resumo_server"
 />
 <CommandCard 
   name="/server_stats_image" 
-  description="Gera uma imagem com as estatísticas do servidor." 
+  description="Gera um cartão gráfico com as estatísticas do servidor." 
   usage="/server_stats_image"
+/>
+<CommandCard 
+  name="/shiro_news" 
+  description="Mostra as notícias e novidades da Shiro." 
+  usage="/shiro_news"
 />
 
 ## Status e Suporte
@@ -423,23 +591,18 @@ Comandos essenciais de ajuda, identidade e status.
 />
 <CommandCard 
   name="/vote" 
-  description="Apoie a Shiro votando no Top.gg!" 
+  description="Apoie a Shiro votando no Top.gg e ganhe moedas e Double XP." 
   usage="/vote"
 />
 <CommandCard 
   name="/thanks" 
-  description="Agradecimentos da equipe Nekomura."
+  description="Mostra os créditos e desenvolvedores da Shiro." 
   usage="/thanks"
 />
 <CommandCard 
   name="/terms" 
-  description="Termos de Uso e Privacidade da Shiro." 
+  description="Termos de Uso e Política de Privacidade da Shiro." 
   usage="/terms"
-/>
-<CommandCard 
-  name="/actions" 
-  description="Painel de ações interativo" 
-  usage="/actions"
 />
 `,
 
@@ -468,48 +631,24 @@ Ferramentas completas para artistas e criadores visuais.
 />
 <CommandCard 
   name="/exif" 
-  description="Remove metadados ocultos de imagens por segurança." 
+  description="Remove dados EXIF e metadados ocultos de imagens por segurança." 
   usage="/exif imagem: [arquivo]"
 />
 <CommandCard 
   name="/resize" 
-  description="Redimensiona imagens para tamanhos específicos." 
-  usage="/resize largura: 1920 altura: 1080"
+  description="Redimensiona imagens para os tamanhos das redes sociais (Instagram, Twitter, TikTok e outros)." 
+  usage="/resize imagem: [arquivo] preset: Instagram Post (1080x1080)"
 />
 <CommandCard 
   name="/convert" 
-  description="Converte arquivos entre formatos (PNG, JPG, WEBP)." 
-  usage="/convert formato: png"
+  description="Converte arquivos entre formatos (PNG, JPEG, WEBP, AVIF e GIF) com qualidade ajustável." 
+  usage="/convert arquivo: [arquivo] formato: webp qualidade: 80"
 />
 <CommandCard 
   name="/reduzir" 
-  description="Reduz o peso de imagens mantendo a qualidade." 
-  usage="/reduzir qualidade: 80"
+  description="Reduz o peso de imagens e GIFs mantendo a qualidade visual." 
+  usage="/reduzir imagem: [arquivo] nivel: Média"
 />
-`,
-
-  'card-vtuber': `
-# Card VTuber
-
-Crie e personalize sua identidade visual com o editor web premium da Shiro. O Card VTuber é uma assinatura digital que exibe suas estatísticas, redes sociais e status na comunidade.
-
-<Callout variant="tip">
-  **Dica:** O Card VTuber possui um editor visual completo na nossa Dashboard, onde você pode arrastar elementos e ver as mudanças em tempo real.
-</Callout>
-
-## Editor Visual (Drag & Drop)
-Diferente de comandos de texto complicados, a Shiro oferece uma interface de "arrastar e soltar":
-*   **Posicionamento Livre:** Mova seu avatar, nome e badges para qualquer lugar do card.
-*   **Personalização de Cores:** Ajuste a paleta do card para combinar com a sua identidade visual.
-*   **Remoção de Elementos:** Remova elementos não necessários do card para manter-o limpo e simples.
-
-## Elementos do Card
-*   **Status de Transmissão:** Exiba se você está em live ou gravando.
-*   **Créditos de Arte:** Espaço dedicado para dar os devidos créditos aos artistas do seu modelo/ilustração.
-*   **Redes Sociais:** Ícones clicáveis e arrobas das suas principais plataformas.
-*   **QR Code Personalizado:** Gere um QR Code de um link especifico para indexar uma rede social, um portifólio, uma pagina web ou um servidor de Discord.
-
-[![VTuber Card Editor](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vtuber_card.png)](https://shirobot.xyz/dashboard/vtuber-card)
 `,
 
   'como-acessar': `
@@ -521,13 +660,7 @@ A [Dashboard da Shiro](https://shirobot.xyz/dashboard) é o seu painel de contro
 ![Exemplo da Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/docs/how_to_acess_update2.png)
 
 ## Menu de Seleção de Servidor
-Logo ao entrar, você verá a lista de todos os servidores onde possui permissão administrativa. Além dos seus servidores, o topo da página oferece atalhos rápidos para serviços globais:
-
-1. **Card VTuber:** Abre o editor visual para você criar e personalizar sua identidade VTuber (gratuito para todos).
-2. **Card Studio:** Área premium (exclusiva para VIPs) com ferramentas avançadas para a criação de banners e cards complexos.
-3. **Shiro VIP:** Portal para assinar nossos planos (Espresso, Cappuccino, Macchiato) e liberar recursos extras.
-4. **Moderação (Staff):** Atalho visível apenas para moderadores globais da Shiro.
-5. **Painel Dev:** Atalho restrito aos desenvolvedores da bot.
+Logo ao entrar, você verá a lista de todos os servidores onde possui permissão administrativa. No topo da página fica o atalho para o **Shiro VIP**, onde você assina os planos (Bronze, Silver e Gold) e libera recursos extras.
 
 ## Gerenciando um Servidor
 Ao clicar em **"Gerenciar"** no card de um servidor, você entrará no painel específico dele. 
@@ -537,10 +670,10 @@ Caso a bot não esteja no servidor, você verá um botão **"Adicionar Bot"**.
 
 ## Estrutura do Painel do Servidor
 A barra lateral esquerda divide as configurações em 4 grandes grupos:
-*   **Global:** Visão Geral, Analytics e Configurações de Canais.
-*   **Moderação:** Verificações, Auto Moderação, Blacklist, Apelações e Logs.
-*   **Comunidade:** Sistema de XP, Cargos Agendados, Voz Dinâmica e Alertas de Live.
-*   **Economia:** Comissões, Loja de Pontos e Recompensas VIP.
+*   **Global:** Visão Geral, Analytics, Canais & Cargos e Painel de Ações.
+*   **Moderação:** Verificações, Restrição de Cargos, Anti-Selfbot, Blacklist, Apelações de Ban e Avisos.
+*   **Comunidade:** Sistema de XP, Cargo por Agendamento, Voz Dinâmica, Alertas de Live, Sorteios, Feedbacks e Tickets.
+*   **Economia:** Loja de Pontos e Recompensas VIP.
 `,
 
   'overview-dash': `
@@ -594,7 +727,7 @@ Você pode acessá-lo clicando no seu avatar/nome de usuário no menu lateral ou
 *   **Estatísticas de Votação:** Veja quantas vezes você apoiou a Shiro no Top.gg.
 
 <Callout variant="tip">
-  Seu perfil é a sua assinatura no ecossistema da Shiro. Membros VIP (Espresso, Cappuccino ou Macchiato) ganham badges exclusivas e destaque em seus perfis!
+  Seu perfil é a sua assinatura no ecossistema da Shiro. Membros VIP (Bronze, Silver ou Gold) ganham badges exclusivas e destaque em seus perfis!
 </Callout>
 `,
 
@@ -604,14 +737,18 @@ Você pode acessá-lo clicando no seu avatar/nome de usuário no menu lateral ou
 Esta é a central de automação básica do seu servidor na Dashboard.
 
 <Callout variant="tip">
-  Configure Auto-Roles, Avisos de Boas-vindas e gerencie permissões de comandos e mídia de forma visual.
+  Configure Auto-Roles, logs e gerencie permissões de comandos e mídia de forma visual.
 </Callout>
 
 ## Funcionalidades Principais
-1. **Auto-Role:** Defina cargos que os usuários (ou bots) recebem automaticamente ao entrar.
-2. **Restrições de Mídia:** Defina quais canais permitem apenas imagens, apenas textos ou links, bloqueando spams visuais.
-3. **Comandos Desabilitados:** Desligue comandos específicos da Shiro globalmente no servidor.
-4. **Restrições de Comandos por Cargo:** Permita que apenas o cargo "Staff", por exemplo, use o comando \`/clear\`.
+1. **Entradas e Auto-Role:** Defina cargos que os usuários (ou bots) recebem automaticamente ao entrar.
+2. **Logs e Avisos:** Escolha os canais de feedback e de registro das ações da Shiro.
+3. **Cargo para a Tag do Servidor:** Dê um cargo automaticamente para quem começar a usar a tag do seu servidor no perfil.
+4. **Monitor de Cargo:** Receba um alerta quando alguém receber um cargo específico.
+5. **Restrições de Mídia:** Defina quais canais permitem apenas imagens, apenas textos ou links, bloqueando spams visuais.
+6. **Canais Bloqueados:** Canais onde os comandos da Shiro são ignorados (administradores continuam podendo usar).
+7. **Comandos Desabilitados:** Desligue comandos específicos da Shiro no servidor.
+8. **Restrições de Comandos por Cargo:** Permita que apenas o cargo "Staff", por exemplo, use o comando \`/clear\`.
 
 ![Canais & Cargos](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/channels_roles.png)
 `,
@@ -801,10 +938,57 @@ Na aba de configurações, administradores têm acesso a ferramentas destrutivas
 *   \`/wallet\` — Confira seu saldo de moedas.
 `,
 
+  'anti-selfbot': `
+# Anti-Selfbot
+
+A Shiro vigia contas que mandam a **mesma mensagem em vários canais** (o padrão dos selfbots de spam) e age em segundos, enquanto a conta ainda está mandando.
+
+<Callout variant="tip">
+  Na Dashboard, a seção **Anti-Selfbot** tem duas abas: **Detecção inteligente** (esta página) e **Canal Armadilha** ([veja aqui](/docs/honeypot)). As duas funcionam juntas e você pode ligar uma, a outra ou as duas.
+</Callout>
+
+## Como ela decide
+A análise é rápida e acontece toda na memória do bot:
+
+*   **Compara cada mensagem com as anteriores da mesma conta.** Com anexos, compara os **arquivos** (tipo e tamanho), então mudar o texto não engana.
+*   **Dispara** quando a mesma mensagem aparece em vários canais dentro da janela da sensibilidade escolhida, ou muitas vezes no mesmo canal. Textos curtinhos ("oi", "kkk") precisam de mais canais para contar.
+*   **Calcula a confiança** (alta ou média) com base nos chats de call usados, imagens por mensagem, links e convites, idade da conta, tempo no servidor e a flag de spammer do Discord.
+*   **Depois de pegar alguém**, as próximas cópias da mesma mensagem somem na hora por 10 minutos.
+*   O **canal armadilha** fica de fora da contagem: quem escrever lá segue as regras da aba Canal Armadilha.
+
+## Configurações
+*   **Ação:** só avisar no canal de logs, apagar as cópias, apagar + castigo (timeout), apagar + expulsar ou banir (apaga as mensagens da última hora).
+*   **Duração do castigo:** de 10 minutos a 28 dias (só para a ação de castigo).
+*   **Sensibilidade:**
+    - **Alta:** 3 canais em até 2 minutos.
+    - **Normal (recomendado):** 4 canais em até 1 minuto.
+    - **Baixa:** 5 canais em até 1 minuto.
+    - **Personalizada:** você escolhe em quantos canais a mesma mensagem precisa aparecer (de 2 a 10) e dentro de quanto tempo (de 15 segundos a 10 minutos).
+*   **Canal de logs:** recebe um relatório com a análise e os botões **Banir** e **Falso positivo**.
+*   **Cargos ignorados:** membros com esses cargos nunca são analisados.
+
+<Callout variant="warning">
+  **Quem nunca é analisado:** bots, webhooks, o dono do servidor, quem tem \`Administrador\`, \`Gerenciar Mensagens\` ou \`Gerenciar Servidor\` e os cargos ignorados.
+</Callout>
+
+## Falso positivo
+Se a Shiro pegar alguém por engano, use o botão **Falso positivo** no relatório do canal de logs ou na lista de ocorrências da Dashboard. O castigo (ou o ban) é removido na hora. As mensagens apagadas não voltam.
+
+## Ocorrências e privacidade
+*   Cada detecção fica registrada na Dashboard com a análise completa (conteúdo, canais, tempo, motivo e ação tomada).
+*   Os registros ficam guardados por **30 dias** e depois são **apagados por completo** do banco de dados, sem cópias.
+*   Você pode limpar o histórico do servidor a qualquer momento pelo botão **Limpar**.
+*   O relatório enviado no canal de logs é uma mensagem do Discord e continua lá até a sua equipe apagá-la.
+`,
+
   honeypot: `
 # Honeypot (Canais Armadilha)
 
 Configure armadilhas em canais de texto ou voz para punir automaticamente selfbots e usuários maliciosos.
+
+<Callout variant="info">
+  O Canal Armadilha agora fica dentro da seção **Anti-Selfbot** da Dashboard, na aba **Canal Armadilha**. Na outra aba está a [Detecção inteligente](/docs/anti-selfbot), que pega selfbots que espalham a mesma mensagem por vários canais.
+</Callout>
 
 <Callout variant="tip">
   Esta é uma das defesas mais eficazes contra bots de divulgação (selfbots) que entram no servidor para enviar DMs maliciosas para seus membros.
@@ -846,7 +1030,7 @@ Para evitar que membros legítimos caiam na armadilha por acidente:
 3. Ative o Honeypot na Dashboard da Shiro.
 
 ### 3. Ativação na Dashboard
-Na aba **Honeypot**, selecione os canais preparados e ative as chaves correspondentes (Chat ou Call).
+Na seção **Anti-Selfbot**, aba **Canal Armadilha**, selecione os canais preparados e ative as chaves correspondentes (Chat ou Call).
 
 ## Configurações Principais
 *   **Punição:** Escolha entre **Ban** (Recomendado), **Kick** ou **Timeout de 24h**.
@@ -864,8 +1048,8 @@ Na aba **Honeypot**, selecione os canais preparados e ative as chaves correspond
 Gerencie candidaturas de artistas, desenvolvedores e outros talentos de forma profissional e centralizada pela Dashboard.
 
 <Callout variant="tip">
-  Esta aba permite que você analiseos, vejaos, veja redes sociais e aprove membros para receber cargos/tags especificas conforme as categorias pré setadas na Dashboard. (Exemplo: Artista, Editor, Streamer, etc.)
- </Callout>
+  Esta aba permite que você analise portfólios, veja redes sociais e aprove membros para receber cargos específicos conforme as categorias configuradas na Dashboard (exemplo: Artista, Editor, Streamer).
+</Callout>
 
 Diferente de um simples captcha, o sistema de Verificação da Shiro é focado em **curadoria de talentos** e organização de comunidades artísticas ou de nicho.
 
@@ -885,10 +1069,24 @@ Você pode processar cada pedido com um clique:
 ## Configuração do Painel
 Lembre-se que o visual do painel que aparece no Discord (título, banner e canal) deve ser configurado na aba **Canais & Cargos** na Dashboard. O painel final é enviado ao canal de sua escolha para que os membros possam clicar e iniciar o processo.
 
-<Callout variant="info">
-  Em breve - Novo sistema de verificação com categorias personalizáveis, com campos personalizados para cada categoria.
-  </Callout>
+## Criador de Verificações (VIP)
+Na aba **Criador**, servidores com plano **Silver** ou **Gold** podem montar verificações próprias, com até **5 perguntas** personalizadas no formulário que o membro preenche no Discord. O plano Silver permite até 3 verificações customizadas e o Gold até 5.
 
+`,
+
+  'restricao-cargos-dash': `
+# Restrição de Cargos
+
+Impeça que cargos sensíveis sejam dados por qualquer pessoa. Quando ativado, os cargos restritos só podem ser atribuídos por quem estiver na whitelist.
+
+## Como funciona
+*   **Cargos Restritos:** selecione os cargos que ninguém pode atribuir, exceto a whitelist.
+*   **Whitelist:** cargos e usuários (por ID) que podem continuar dando os cargos restritos.
+*   **Canal de Log:** a Shiro registra as tentativas bloqueadas.
+
+<Callout variant="warning">
+  A Shiro precisa da permissão **Gerenciar Cargos** e o cargo dela tem que estar **acima** dos cargos restritos na hierarquia.
+</Callout>
 `,
 
   'blacklist-dash': `
@@ -926,6 +1124,9 @@ O sistema de apelações da Shiro centraliza todas as solicitações em uma fila
     *   **Aceitar:** O usuário é desbanido automaticamente e recebe uma notificação informando que sua volta foi permitida.
     *   **Recusar:** O usuário recebe uma mensagem informando que seu banimento foi mantido, com uma nota opcional da staff.
 
+## Aviso de Banimento
+Antes de banir alguém, a Shiro envia uma DM para a pessoa avisando do banimento e do motivo. Em **Apelações de Ban > Aviso de Banimento** você pode incluir nessa DM o convite de um servidor de suporte, para que a pessoa consiga pedir a revisão. Use um convite que não expira (discord.gg/...).
+
 ## Vantagens
 *   **Histórico Preservado:** Todas as apelações ficam salvas para consulta futura, mesmo as rejeitadas.
 *   **Segurança:** Somente administradores ou cargos com permissão de moderador podem tomar decisões sobre apelações.
@@ -946,35 +1147,51 @@ Nesta seção, você pode visualizar todos os avisos ativos que membros do servi
 `,
 
   'agendamentos-dash': `
-# Cargos Agendados
+# Cargo por Agendamento
 
-Automatize a gestão de cargos temporários com precisão cirúrgica. Esta aba permite que você programe quando um cargo deve ser entregue ou retirado de um membro automaticamente.
+Crie painéis onde os membros agendam o recebimento de um cargo em uma data futura. Ideal para cargos de "Fundador", recompensas de tempo de casa ou liberação de áreas depois de alguns dias.
 
 ![Scheduled Roles](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/schedule_role.png)
 
-## Principais Casos de Uso
-*   **Punições Leves:** Configure cargos de "Silenciado" ou "Isolado" que expiram sozinhos após algumas horas.
-*   **Eventos:** Dê um cargo de "Participante" que será removido automaticamente quando o evento acabar.
+## Como funciona
+1. **Crie um painel:** a Shiro posta no canal escolhido uma mensagem com o botão **Agendar Resgate**.
+2. **O membro clica:** ele recebe uma confirmação privada com a data prevista.
+3. **No dia marcado:** o cargo é entregue automaticamente e o membro recebe uma DM.
+
+## Configurações do Painel
+*   **Título e Descrição:** o texto da mensagem enviada no Discord.
+*   **Cargo a Conceder:** o cargo que será entregue.
+*   **Dias de Espera:** quantos dias até a entrega (0 entrega logo após o agendamento).
+*   **Auto-Trigger (opcional):** quem receber um cargo específico é agendado automaticamente, sem precisar clicar no botão.
 
 ## Gestão na Dashboard
-*   **Fila de Agendamentos:** Visualize todos os agendamentos ativos, quem é o alvo e quanto tempo falta para a execução.
-*   **Cancelamento Rápido:** Se precisar interromper um agendamento, basta um clique para revogar a ação futura.
+*   **Agendamentos:** veja cada agendamento com status Pendente, Entregue ou Cancelado.
+*   **Editar painel:** a mensagem no Discord é atualizada (ou reenviada, se tiver sido apagada).
+
+<Callout variant="info">
+  Também dá para gerenciar os painéis pelo comando \`/cargo-agendamento\` (criar, listar e remover).
+</Callout>
 `,
 
   'dynamicvoice-dash': `
 # Voz Dinâmica (Call de Voz)
 
-Diga adeus àquela lista infinita de canais de voz vazios. Com o sistema de Voz Dinâmica, os canais são criados apenas quando necessários e excluídos assim que ficam vazios.
+Diga adeus àquela lista infinita de canais de voz vazios. Com a Voz Dinâmica, a Shiro mantém sempre uma quantidade certa de calls livres em uma categoria: cria novas quando as livres enchem e apaga as que sobram quando esvaziam.
 
 ## Como funciona?
-1. **O Gerador:** Você configura um canal de voz como o "Gerador de Calls".
-2. **Criação Instantânea:** Assim que um membro entra no canal gerador, a Shiro o move instantaneamente para um novo canal de voz privado criado na hora.
-3. **Autonomia do Dono:** Quem criou o canal tem controle total (via comandos ou botões) para trancar a call, mudar o limite de membros ou renomear o canal.
-4. **Auto-Limpeza:** Quando o último membro sai da call, o canal é deletado automaticamente, mantendo o servidor limpo.
+1. **A Categoria:** Você escolhe uma categoria do servidor. Só os canais de voz dessa categoria são gerenciados.
+2. **A Margem:** Você define quantas calls vazias devem ficar sempre disponíveis (ex: 1).
+3. **Criação Automática:** Quando alguém entra na última call livre, a Shiro cria uma nova na hora.
+4. **Auto-Limpeza:** Quando sobram calls vazias além da margem, as excedentes são apagadas.
+5. **Numeração Organizada:** O \`#\` do nome vira o menor número livre na categoria. Calls com gente dentro nunca são renomeadas.
 
 ## Configurações na Dashboard
-*   **Nomenclatura Padrão:** Defina como os novos canais devem ser chamados (ex: "Call de {user}").
-*   **Permissões:** Escolha quais cargos podem usar o sistema de voz dinâmica.
+*   **Categoria:** onde as calls dinâmicas ficam.
+*   **Margem de Canais Vazios:** quantas calls livres manter abertas.
+*   **Template de Nome:** use \`#\` para o número da call (ex: \`Call #\` vira Call 1, Call 2...).
+*   **Limite de Usuários:** limite padrão de pessoas por call (0 = ilimitado).
+*   **Canais Ignorados:** canais da categoria que a Shiro não conta nem apaga.
+*   **Várias Categorias:** cada categoria pode ter sua própria configuração. A quantidade depende do plano VIP do servidor.
 
 ![Dynamic Voice](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/dynamic_voice.png)
 `,
@@ -995,6 +1212,68 @@ Basta inserir o link do canal ou o nome de usuário na Dashboard e selecionar o 
 ![Live Alerts](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/live_alert.png)
 `,
 
+  'sorteios-dash': `
+# Sorteios
+
+Crie e gerencie sorteios do servidor direto pela Dashboard, com prévia em tempo real de como a mensagem vai aparecer no Discord.
+
+## Tipos de Sorteio
+*   **Sorteio no Discord:** os membros participam clicando em um botão na mensagem publicada no canal.
+*   **Sorteio na Dashboard:** o sorteio é conduzido pela Dashboard.
+
+## Configurações
+*   **Título, descrição e número de vencedores.**
+*   **Canal de destino:** onde o painel é publicado.
+*   **Agendamento (opcional):** data de início e de fim.
+*   **Cargos Permitidos (opcional):** só quem tem esses cargos pode participar. Vazio libera para todos.
+*   **Botão Customizado (opcional):** cole o ID de um botão criado em um construtor de mensagens (como o discord.builders) e a Shiro registra os participantes que clicarem nele.
+
+## Durante e depois do sorteio
+*   **Status:** Rascunho, Agendado, Ativo, Finalizado ou Cancelado.
+*   **Ações:** publicar no Discord, iniciar, forçar o início, realizar o sorteio e finalizar.
+*   **Vencedores:** envie uma DM para os vencedores com uma mensagem opcional.
+*   **Reaproveitar:** crie um novo sorteio a partir de um antigo.
+`,
+
+  'feedbacks-dash': `
+# Feedbacks
+
+Receba opiniões e sugestões dos membros de forma organizada.
+
+## Como funciona
+1. Configure os canais e envie o **Painel de Abertura** em um canal do servidor.
+2. Os membros clicam no botão do painel e enviam o feedback.
+3. A equipe recebe os feedbacks no **Canal de Moderação** e o histórico fica no **Canal de Logs**.
+
+## Configurações
+*   **Sistema Ativado/Desativado.**
+*   **Permitir Feedbacks Anônimos.**
+*   **Tempo limite para edição:** por quantos minutos o autor ainda pode editar o feedback (máx. 300).
+*   **Canais:** Canal do Painel, Canal de Moderação (Staff) e Canal de Logs (Histórico).
+*   **Cargo de Gerenciamento:** quem pode gerenciar os feedbacks.
+*   **Painel personalizado:** monte o embed do painel ou use o Custom ID de um botão criado em um construtor de mensagens.
+
+<Callout variant="info">
+  Atalho pelo Discord: \`/configurar feedback\`.
+</Callout>
+`,
+
+  'tickets-dash': `
+# Tickets
+
+O sistema de tickets da Shiro (Nekomura Tickets) é uma aplicação própria do ecossistema, com um painel separado otimizado para atendimento. Na Dashboard, a seção **Tickets** leva você direto para o painel de tickets do seu servidor.
+
+## Recursos
+*   **Painéis Interativos:** mensagens com botões e seletores para os membros abrirem atendimento.
+*   **Categorias & Permissões:** organize tipos de chamado (denúncias, dúvidas, compras) e defina quais cargos atendem cada um.
+*   **Formulários Prévios:** peça informações antes de abrir o ticket (nickname, motivo, prints).
+*   **Transcripts & Histórico:** exporte as conversas em texto ou HTML para auditoria.
+
+<Callout variant="info">
+  No Discord, use \`/ticket-setup\` para ver o passo a passo de configuração.
+</Callout>
+`,
+
   'loja-dash': `
 # Loja de Pontos
 
@@ -1012,6 +1291,18 @@ A Shiro suporta um sistema de revenda onde usuários podem colocar seus itens co
 ![Shop Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_rewards.png)
 `,
 
+  'vip-rewards-dash': `
+# Recompensas VIP
+
+Dê cargos automaticamente para quem tem assinatura VIP da Shiro.
+
+## Como funciona
+Quando um membro entra no servidor ou interage com a Shiro, ela confere o plano VIP dele e entrega o cargo configurado para aquele plano.
+
+*   **Um cargo por plano:** Bronze, Silver e Gold.
+*   **Global VIP:** um cargo dado a qualquer assinante, independente do plano.
+`,
+
   premium: `
 # Shiro VIP & Economia
 
@@ -1023,7 +1314,7 @@ A Shiro oferece um ecossistema de benefícios que afeta tanto o seu perfil globa
 
 ## Tiers de Assinatura (VIP)
 
-Temos três níveis de assinatura inspirados em cafés, cada um com foco em diferentes necessidades:
+Temos três níveis de assinatura, **Bronze**, **Silver** e **Gold**, cada um com foco em diferentes necessidades. Assinantes antigos dos planos Espresso, Cappuccino e Macchiato foram migrados automaticamente para Bronze, Silver e Gold.
 
 [![VIP Tiers](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/vip_tiers.png)](https://shirobot.xyz/vip)
 
@@ -1049,52 +1340,6 @@ As moedas adquiridas são adicionadas à sua **Carteira Global (Wallet)** e pode
 
 <Callout variant="info">
   Para assinar ou comprar moedas, acesse a aba **Shiro VIP** no menu principal da Dashboard. Todos os pagamentos são processados de forma segura e os benefícios são ativados instantaneamente!
-</Callout>
-`,
-
-  'arena-times': `
-# Arena de Times
-
-O Sistema de Times da Shiro permite que os membros do servidor se agrupem em equipes, acumulem XP juntos, gerenciem um tesouro compartilhado e até mesmo negociem jogadores no mercado!
-
-<Callout variant="tip">
-  O Sistema de Times é ideal para criar competitividade saudável e engajamento no seu servidor.
-</Callout>
-
-## Funcionalidades Principais
-
-### Arena (Lista de Times)
-Visualize todos os times registrados no servidor. Cada time possui:
-*   **Nome e Descrição**
-*   **Ícone e Banner personalizados**
-*   **Cor do Cargo no Discord** (exibida no cargo do time)
-*   **Status de Mercado** (Aberto ou Fechado para negociações)
-
-### Ranking de Times
-Acompanhe quais times estão dominando o servidor. O ranking leva em consideração:
-*   **Total de XP** acumulado pelos membros.
-*   **Tesouro** do time.
-
-### Tesouro do Time
-Cada time possui um cofre de moedas compartilhado:
-*   **Doações:** Qualquer membro do time pode doar moedas para o tesouro.
-*   **Uso:** O tesouro é utilizado para comprar jogadores no mercado.
-
-### Mercado de Jogadores
-Um mercado dinâmico onde os líderes podem negociar membros:
-*   **Vender Jogador:** O líder pode listar um membro do time no mercado por um valor em moedas.
-*   **Comprar Jogador:** Outros times podem usar o saldo do tesouro para comprar o jogador listado.
-
-## Gerenciamento (Apenas Líderes)
-Se você for o líder de um time, terá acesso à aba **Gerenciar** e **Editar**, onde pode:
-*   **Convidar Membros:** Envia um convite via DM para o usuário (o usuário precisa estar com as DMs abertas).
-*   **Remover Membros:** Expulsar um membro do time.
-*   **Vender Jogador:** Listar um membro no mercado.
-*   **Editar Perfil do Time:** Alterar nome, descrição, cores, ícone e banner.
-*   **Trancar/Abrir Mercado:** Definir se o time está aberto a negociações.
-
-<Callout variant="info">
-  Os convites expiram e podem ser cancelados pelo líder a qualquer momento na aba de gerenciamento.
 </Callout>
 `,
 
@@ -1125,6 +1370,12 @@ Acompanhe as últimas novidades, correções de bugs e funcionalidades adicionad
 <Callout variant="info">
   **Nota:** As atualizações menores e correções de bugs não são postadas ao publico, apenas atualizações importantes são postadas.
 </Callout>
+
+## Atualização - Anti-Selfbot 01/10/2026
+*   **Anti-Selfbot:** A seção Canais Armadilha virou **Anti-Selfbot**. Além do Canal Armadilha, agora a Shiro detecta contas que mandam a mesma mensagem em vários canais e age em segundos, com sensibilidade em presets ou personalizada.
+*   **Ocorrências por 30 dias:** As detecções ficam na Dashboard por 30 dias e depois são apagadas por completo.
+*   **Voz Dinâmica:** Calls ocupadas não são mais renomeadas e a criação de novas calls ficou mais confiável.
+*   **Remoção do Card VTuber e do Sistema de Times:** Recursos descontinuados foram retirados da documentação.
 
 ## Atualização - Remoções e Adições 08/05/2026
 *   **Honeypot Chat e Call:** Sistema de canais armadilhas em chat de call e chat de texto com aleatoriedade de nomes para evitar selfbots.
