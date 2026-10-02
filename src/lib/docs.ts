@@ -230,7 +230,7 @@ Gerencie seu servidor com precisão e configure as regras do bot.
 />
 <CommandCard 
   name="/webhook create" 
-  description="Cria ou atualiza o webhook global do servidor (usado por Painéis de Ação, Verificação e Sorteios)." 
+  description="Cria ou atualiza o webhook global do servidor (usado por Modal Role, Verificação e Sorteios)." 
   usage="/webhook create channel: #canal"
 />
 <CommandCard 
@@ -510,7 +510,7 @@ Comandos essenciais de ajuda, identidade e status.
 />
 <CommandCard 
   name="/actions" 
-  description="Abre um Painel de Ações configurado na Dashboard." 
+  description="Abre um painel do Modal Role configurado na Dashboard." 
   usage="/actions painel: nome_do_painel"
 />
 
@@ -670,7 +670,7 @@ Caso a bot não esteja no servidor, você verá um botão **"Adicionar Bot"**.
 
 ## Estrutura do Painel do Servidor
 A barra lateral esquerda divide as configurações em 4 grandes grupos:
-*   **Global:** Visão Geral, Analytics, Canais & Cargos e Painel de Ações.
+*   **Global:** Visão Geral, Analytics, Canais & Cargos e Modal Role.
 *   **Moderação:** Verificações, Restrição de Cargos, Anti-Selfbot, Blacklist, Apelações de Ban e Avisos.
 *   **Comunidade:** Sistema de XP, Cargo por Agendamento, Voz Dinâmica, Alertas de Live, Sorteios, Feedbacks e Tickets.
 *   **Economia:** Loja de Pontos e Recompensas VIP.
@@ -754,7 +754,7 @@ Esta é a central de automação básica do seu servidor na Dashboard.
 `,
 
   'actions-dash': `
-# Painel de Ações
+# Modal Role
 
 Crie menus interativos avançados para que os membros do seu servidor possam escolher seus próprios cargos de forma autônoma e segura.
 
@@ -762,19 +762,19 @@ Crie menus interativos avançados para que os membros do seu servidor possam esc
   Esqueça os velhos sistemas de "reaction roles" com emojis confusos. A Shiro utiliza Botões e Modais modernos (com Checkboxes ou botões de Radio) para oferecer uma experiência visual muito superior.
 </Callout>
 
-O Painel de Ações é uma ferramenta poderosa da Dashboard que permite configurar botões interativos que abrem um menu pop-up direto na tela do usuário no Discord.
+O Modal Role é uma ferramenta poderosa da Dashboard que permite configurar botões interativos que abrem um menu pop-up direto na tela do usuário no Discord.
 
 ## Principais Funcionalidades
 
 *   **Modais Interativos:** Configure painéis de múltipla escolha (Checkboxes) para seleção livre, ou de escolha única (Radio) para que o usuário seja forçado a escolher apenas uma opção (ótimo para cores ou times).
 *   **Restrições de Acesso:** Você pode limitar a interação definindo "Cargos Obrigatórios". Se ativado, apenas membros com aquele cargo poderão clicar no botão e abrir o painel.
 *   **Integração Simples:** Todo o layout e opções dos cargos são configurados e salvos pela aba visual na Dashboard.
-*   **Suporte a Webhooks:** Agora você pode disparar painéis de ações a partir de mensagens personalizadas criadas em ferramentas como o [discord.builders](https://discord.builders/). Basta vincular o customId do seu botão ou menu ao ID de gatilho do painel na Dashboard.
+*   **Suporte a Webhooks:** Agora você pode disparar painéis do Modal Role a partir de mensagens personalizadas criadas em ferramentas como o [discord.builders](https://discord.builders/). Basta vincular o customId do seu botão ou menu ao ID de gatilho do painel na Dashboard.
 
 ![Actions](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/actions.png)
 
 ## Vínculos entre Painéis (Links)
-Uma das funções mais avançadas do Painel de Ações é a capacidade de vincular um painel a outro, permitindo que a seleção de um cargo afete automaticamente outros grupos.
+Uma das funções mais avançadas do Modal Role é a capacidade de vincular um painel a outro, permitindo que a seleção de um cargo afete automaticamente outros grupos.
 
 Existem dois comportamentos principais para os vínculos:
 
@@ -1343,6 +1343,53 @@ As moedas adquiridas são adicionadas à sua **Carteira Global (Wallet)** e pode
 </Callout>
 `,
 
+  builder: `
+# Builder de Mensagens
+
+Monte mensagens do Discord com **Components V2** (containers, seções, galerias, botões e menus), veja a prévia em tempo real e envie por webhook. É grátis e não precisa de login.
+
+<Callout variant="tip">
+  Acesse pelo menu **⋯ > Builder de Mensagens** no topo do site, ou direto em [shirobot.xyz/builder](https://shirobot.xyz/builder).
+</Callout>
+
+## Montando a mensagem
+*   **Blocos:** adicione Container, Texto, Seção, Galeria, Separador e Botões/Menu. Arraste pelo ícone de pontinhos para reordenar.
+*   **Prévia ao lado:** mostra a mensagem como ela aparece no Discord. Clique num bloco da prévia para abrir o campo dele no editor.
+*   **Desfazer e refazer:** \`Ctrl+Z\` e \`Ctrl+Y\`.
+*   **Rascunho automático:** a mensagem fica salva no seu navegador e volta quando você abre a página de novo.
+*   **Validação:** o builder avisa o que o Discord recusaria (texto vazio, link inválido, mais de 40 componentes ou 4000 caracteres) antes de enviar.
+
+## Markdown do Discord
+Os campos de texto têm uma barra de formatação e a prévia entende o markdown completo do Discord:
+*   \`# Título\`, \`## Título\`, \`### Subtítulo\` e \`-# texto pequeno\`
+*   \`**negrito**\`, \`*itálico*\`, \`__sublinhado__\`, \`~~riscado~~\` e \`||spoiler||\`
+*   \`\`código\`\` e blocos de código com três crases
+*   Listas (\`- item\` e \`1. item\`), citações (\`> texto\` e \`>>> várias linhas\`)
+*   Links \`[texto](https://...)\`, menções \`<@&id>\` e \`<#id>\`, emojis \`<:nome:id>\` e datas \`<t:1767225600:R>\`
+
+## Exportar e importar JSON
+Na aba **JSON** você pode **copiar**, **baixar o .json** ou colar um JSON e clicar em **Carregar**. O formato é o da API do Discord, então funciona com outros bots e ferramentas.
+
+<Callout variant="info">
+  A aba JSON existe em **todos** os builders da Shiro: aqui e nos painéis da Dashboard (Feedbacks, Verificações, Modal Role, Cargo por Agendamento e Canal Armadilha).
+</Callout>
+
+## Enviando por webhook
+1. No Discord, abra **Editar canal > Integrações > Webhooks** e crie (ou copie) um webhook.
+2. Cole a **URL do webhook** no campo do builder.
+3. Se quiser, troque o **nome** e o **avatar** de quem envia, ou informe o **ID de um tópico/post** de fórum.
+4. Clique em **Enviar mensagem**.
+
+Para **editar** uma mensagem que você já mandou por esse webhook, cole o link (ou o ID) da mensagem em **Editar mensagem enviada** e clique em **Editar mensagem**.
+
+<Callout variant="warning">
+  **Webhooks só aceitam botões de link.** Botões com ação e menus de seleção precisam de um bot respondendo; nesses casos, use os painéis da Dashboard, onde a própria Shiro responde aos botões.
+</Callout>
+
+## Privacidade
+A mensagem é enviada direto do seu navegador para o Discord. A **URL do webhook nunca é salva** (nem no navegador, nem nos servidores da Shiro). Só o rascunho da mensagem fica guardado no seu navegador.
+`,
+
   discord: `
 # Comunidade & Suporte
 
@@ -1370,6 +1417,13 @@ Acompanhe as últimas novidades, correções de bugs e funcionalidades adicionad
 <Callout variant="info">
   **Nota:** As atualizações menores e correções de bugs não são postadas ao publico, apenas atualizações importantes são postadas.
 </Callout>
+
+## Atualização - Builder de Mensagens 02/10/2026
+*   **Builder de Mensagens:** novo menu no site (⋯ > Builder de Mensagens) para montar mensagens Components V2, exportar o JSON e enviar ou editar por webhook.
+*   **Painéis com builder:** Feedbacks, Verificações, Modal Role, Cargo por Agendamento e Canal Armadilha agora usam o mesmo builder, com botões já ligados às ações da Shiro.
+*   **Alertas de Live:** prévia fiel com markdown completo, linha do link editável e botão de link para a live.
+*   **Ferramentas:** página reorganizada por categorias e novo **Removedor de Fundo**, que roda direto no navegador.
+*   **Modal Role:** a seção "Painel de Ações" da Dashboard agora se chama **Modal Role**. Nada muda no funcionamento.
 
 ## Atualização - Anti-Selfbot 01/10/2026
 *   **Anti-Selfbot:** A seção Canais Armadilha virou **Anti-Selfbot**. Além do Canal Armadilha, agora a Shiro detecta contas que mandam a mesma mensagem em vários canais e age em segundos, com sensibilidade em presets ou personalizada.

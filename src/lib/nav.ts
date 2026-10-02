@@ -41,7 +41,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Analytics", slug: "analytics-dash", badge: "novo" },
       { title: "Perfil do Usuário", slug: "perfil-dash" },
       { title: "Canais & Cargos", slug: "canais-dash" },
-      { title: "Painel de Ações", slug: "actions-dash" },
+      { title: "Modal Role", slug: "actions-dash" },
     ],
   },
   {
@@ -77,6 +77,13 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Loja de Pontos", slug: "loja-dash" },
       { title: "Recompensas VIP", slug: "vip-rewards-dash", badge: "novo" },
       { title: "Shiro VIP", slug: "premium", badge: "premium" },
+    ],
+  },
+  {
+    id: "site",
+    title: "Site",
+    pages: [
+      { title: "Builder de Mensagens", slug: "builder", badge: "novo" },
     ],
   },
   {
