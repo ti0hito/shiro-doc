@@ -55,6 +55,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
       { title: "Avisos", slug: "warns-dash" },
+      { title: "Logs & Auditoria", slug: "logs-dash", badge: "novo" },
     ],
   },
   {

@@ -2,6 +2,59 @@
 // Based on topgg-commands-simple.json (Official List)
 
 const DOCS: Record<string, string> = {
+  'logs-dash': `
+# Logs & Auditoria via Webhook
+
+Mantenha o controle total do seu servidor com um sistema de auditoria completo, moderno e de alta performance.
+
+<Callout variant="tip">
+  **Ultra-Rápido & Sem Lag:** Os logs são enviados diretamente pelo bot para os Webhooks do Discord através de uma fila otimizada com rate limit. A API do site e o banco de dados não sofrem nenhuma carga durante o envio diário de logs!
+</Callout>
+
+## Como Funciona
+
+Ao contrário de sistemas tradicionais que salvam históricos no banco de dados e sobrecarregam o servidor web:
+1. **Envio via Webhook:** Cada evento é formatado em um embed informativo e despachado direto pelo bot para o webhook do canal escolhido.
+2. **Reutilização Inteligente:** O Discord impõe um limite de até 10 webhooks por canal. Se você apontar vários logs diferentes para o mesmo canal (ex: *Mensagem Apagada*, *Mensagem Editada* e *Pins* para \`#logs-chat\`), a Shiro cria e compartilha automaticamente **apenas um único webhook** chamado \`Shiro Logs\`.
+3. **Armazenamento Otimizado (Sparse):** O banco de dados armazena somente os eventos que estiverem ativados e configurados com um canal válido. Se você desativar um log, ele é completamente removido dos registros.
+
+## Atalho no Discord
+
+Você pode abrir diretamente a página de configuração de logs usando o comando:
+
+<CommandCard 
+  name="/configurar logs" 
+  description="Abre o atalho com botão direto para o painel de Logs & Auditoria do seu servidor na Dashboard." 
+  usage="/configurar logs"
+/>
+
+## Categorias e Eventos Disponíveis
+
+A Shiro cobre todos os eventos suportados pela API do Discord divididos em categorias intuitivas:
+
+* **Mensagens:** Mensagem apagada, identificação de quem apagou (via audit log), mensagem editada, limpeza em massa (`/clear`) e mensagens fixadas.
+* **Membros & Contas:** Entrada de novos membros, saída voluntária, expulsão (kick), troca de apelido, atribuição/remoção de cargos e castigos temporários (timeouts).
+* **Moderação:** Banimentos aplicados, desbanimentos e criação/aceitação/rejeição de apelações de ban.
+* **Canais de Texto & Fóruns:** Criação, edição e exclusão de canais, além de tópicos (threads) criados, arquivados ou excluídos.
+* **Canais de Voz:** Entrada e saída de chamadas, troca de canal de voz, silenciamento (mute) em servidor e ensurdecimento (deafen).
+* **Cargos (Roles):** Criação, edição de permissões/cores e exclusão de cargos.
+* **Emojis & Figurinhas:** Emojis e adesivos adicionados, renomeados ou deletados.
+* **Convites (Invites):** Convites criados e excluídos com rastreamento de autor.
+* **Eventos Agendados:** Criação, início, conclusão ou cancelamento de eventos no servidor.
+* **Integrações & Webhooks:** Adição e remoção de integrações e webhooks no servidor.
+* **Servidor & Segurança:** Alterações de nome, ícone, banner, nível de verificação, detecção de spam do AutoMod e atualizações de canais de regras.
+* **Painéis Shiro:** Registros de envios do sistema de Feedback e solicitações de Verificação de Artistas.
+
+## Configuração Passo a Passo
+
+1. Acesse **[shirobot.xyz/dashboard](https://shirobot.xyz/dashboard)** e selecione o seu servidor.
+2. Na barra lateral, na seção de **Moderação**, clique em **Logs & Auditoria** (ou use `/configurar logs` no Discord).
+3. Ative o interruptor geral do módulo de auditoria.
+4. Para cada evento que desejar registrar:
+   * Ligue o interruptor do evento.
+   * Selecione o canal de destino na lista suspensa.
+5. Clique no botão flutuante **"Salvar Alterações"** na parte inferior da tela. A Shiro criará os webhooks necessários automaticamente!
+`,
   intro: `
 # Bem-vindo à Documentação da Shiro
 
@@ -92,6 +145,11 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   name="/configurar feedback" 
   description="Atalho para a configuração do Sistema de Feedbacks na Dashboard." 
   usage="/configurar feedback"
+/>
+<CommandCard 
+  name="/configurar logs" 
+  description="Atalho para a configuração do Sistema de Logs & Auditoria via Webhook na Dashboard." 
+  usage="/configurar logs"
 />
 <CommandCard 
   name="/analytics" 
