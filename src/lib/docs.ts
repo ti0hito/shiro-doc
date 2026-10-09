@@ -32,7 +32,7 @@ Você pode abrir diretamente a página de configuração de logs usando o comand
 
 A Shiro cobre todos os eventos suportados pela API do Discord divididos em categorias intuitivas:
 
-* **Mensagens:** Mensagem apagada, identificação de quem apagou (via audit log), mensagem editada, limpeza em massa (`/clear`) e mensagens fixadas.
+* **Mensagens:** Mensagem apagada, identificação de quem apagou (via audit log), mensagem editada, limpeza em massa (\`/clear\`) e mensagens fixadas.
 * **Membros & Contas:** Entrada de novos membros, saída voluntária, expulsão (kick), troca de apelido, atribuição/remoção de cargos e castigos temporários (timeouts).
 * **Moderação:** Banimentos aplicados, desbanimentos e criação/aceitação/rejeição de apelações de ban.
 * **Canais de Texto & Fóruns:** Criação, edição e exclusão de canais, além de tópicos (threads) criados, arquivados ou excluídos.
@@ -48,7 +48,7 @@ A Shiro cobre todos os eventos suportados pela API do Discord divididos em categ
 ## Configuração Passo a Passo
 
 1. Acesse **[shirobot.xyz/dashboard](https://shirobot.xyz/dashboard)** e selecione o seu servidor.
-2. Na barra lateral, na seção de **Moderação**, clique em **Logs & Auditoria** (ou use `/configurar logs` no Discord).
+2. Na barra lateral, na seção de **Moderação**, clique em **Logs & Auditoria** (ou use \`/configurar logs\` no Discord).
 3. Ative o interruptor geral do módulo de auditoria.
 4. Para cada evento que desejar registrar:
    * Ligue o interruptor do evento.
