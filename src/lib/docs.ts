@@ -409,24 +409,9 @@ Recompense a atividade dos seus membros com experiência e moedas.
 
 ## Configuração (Staff)
 <CommandCard 
-  name="/xp-config habilitar" 
-  description="Liga ou desliga o sistema de XP no servidor." 
-  usage="/xp-config habilitar ativo: true"
-/>
-<CommandCard 
-  name="/xp-config blacklist" 
-  description="Adiciona ou remove um canal da blacklist de XP." 
-  usage="/xp-config blacklist acao: adicionar canal: #spam"
-/>
-<CommandCard 
-  name="/xp-config notificacao" 
-  description="Configura como as notificações de level up são enviadas." 
-  usage="/xp-config notificacao tipos: canal canal: #level-up"
-/>
-<CommandCard 
-  name="/xp-config ver" 
-  description="Mostra as configurações atuais do sistema de XP." 
-  usage="/xp-config ver"
+  name="/xp-config" 
+  description="Abre o painel interativo (Components V2) para gerenciar o sistema de XP, canais ignorados, notificações de level up e catálogo de itens da loja." 
+  usage="/xp-config"
 />
 `,
 
