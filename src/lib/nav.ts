@@ -75,7 +75,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: "dashboard-economia",
     title: "Dashboard - Economia",
     pages: [
-      { title: "Loja de Pontos", slug: "loja-dash" },
+      { title: "Loja & Recompensas", slug: "loja-dash" },
       { title: "Recompensas VIP", slug: "vip-rewards-dash", badge: "novo" },
       { title: "Shiro VIP", slug: "premium", badge: "premium" },
     ],

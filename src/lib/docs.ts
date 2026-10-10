@@ -373,44 +373,44 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   xp: `
 # XP, Níveis & Quests
 
-Recompense a atividade dos seus membros com experiência e moedas.
+Recompense a atividade dos seus membros com experiência e moedas através de um sistema gamificado e balanceado.
 
 <Callout variant="tip">
-  **Dica:** Você pode configurar os prêmios de nível, canais ignorados e bônus pela nossa Dashboard no menu **Sistema de XP**.
+  **Dica:** Você pode configurar multiplicadores, cooldowns, prêmios de marcos e canais ignorados pela Dashboard no menu **Sistema de XP**, além de cargos por nível no menu **Loja & Recompensas**.
 </Callout>
 
 ## Comandos de Nível
 <CommandCard 
   name="/xp ver" 
-  description="Exibe o seu nível atual, XP acumulado e progresso. Informe um usuário para ver o de outro membro." 
+  description="Exibe o seu nível atual, XP acumulado e progresso na barra de evolução. Informe um usuário para consultar o progresso de outro membro." 
   usage="/xp ver usuario: @Hito"
 />
 <CommandCard 
   name="/xp ranking" 
-  description="Exibe o ranking de XP do servidor, com páginas." 
-  usage="/xp ranking pagina: 2"
+  description="Exibe o placar dos membros mais ativos e com maior nível de XP no servidor, com navegação paginada." 
+  usage="/xp ranking pagina: 1"
 />
 
 ## Missões e Daily
 <CommandCard 
   name="/quests" 
-  description="Veja seu progresso nas missões semanais." 
+  description="Acompanhe suas missões semanais dinâmicas e resgate recompensas em moedas e experiência." 
   usage="/quests"
 />
 <CommandCard 
   name="/daily" 
-  description="Resgate suas moedas diárias (100 a 350 moedas + bônus de streak)." 
+  description="Resgate suas moedas diárias com bônus crescente de streak (dias consecutivos) e proteção contra perdas." 
   usage="/daily"
 />
 
 <Callout variant="tip">
-  As Quests são ideais para ganhar bônus massivos de XP e moedas rapidamente!
+  As Quests e o streak diário são ideais para acumular moedas e acelerar o avanço de nível!
 </Callout>
 
 ## Configuração (Staff)
 <CommandCard 
   name="/xp-config" 
-  description="Abre o painel interativo (Components V2) para gerenciar o sistema de XP, canais ignorados, notificações de level up e catálogo de itens da loja." 
+  description="Abre o painel interativo (Components V2) para gerenciar o módulo de XP, canais e cargos com multiplicador, tempo de cooldown, canais ignorados e notificações de level up." 
   usage="/xp-config"
 />
 `,
@@ -421,7 +421,7 @@ Recompense a atividade dos seus membros com experiência e moedas.
 Sistema de economia dinâmica e recompensas.
 
 <Callout variant="tip">
-  **Dica:** É muito mais fácil gerenciar, adicionar e editar itens da loja pela nossa Dashboard no menu **Loja de Pontos**.
+  **Dica:** É muito mais fácil gerenciar, adicionar e editar itens da loja pela nossa Dashboard no menu **Loja & Recompensas**.
 </Callout>
 
 ## Comandos da Loja
@@ -716,7 +716,7 @@ A barra lateral esquerda divide as configurações em 4 grandes grupos:
 *   **Global:** Visão Geral, Analytics, Canais & Cargos e Modal Role.
 *   **Moderação:** Verificações, Restrição de Cargos, Anti-Selfbot, Blacklist, Apelações de Ban e Avisos.
 *   **Comunidade:** Sistema de XP, Cargo por Agendamento, Voz Dinâmica, Alertas de Live, Sorteios, Feedbacks e Tickets.
-*   **Economia:** Loja de Pontos e Recompensas VIP.
+*   **Economia:** Loja & Recompensas e Recompensas VIP.
 `,
 
   'overview-dash': `
@@ -840,51 +840,63 @@ Ao digitar o comando, a Shiro abrirá instantaneamente um **Menu Pop-up (Modal)*
 `,
 
   'sistema-xp': `
-# Sistema de XP
+# Sistema de XP & Gamificação
 
-Transforme seu servidor em um ambiente engajado através do módulo de XP. Membros ganham experiência ao conversar e participar de calls de voz, sobem de nível, desbloqueiam recompensas e competem no ranking do servidor.
+Transforme seu servidor em um ambiente engajado através do módulo de XP. Membros ganham experiência orgânica ao conversar e participar de chamadas de voz, sobem de nível, desbloqueiam cargos automáticos e competem no ranking do servidor.
 
 <Callout variant="tip">
-  Gerencie todas as configurações abaixo pela nossa Dashboard no menu **Sistema de XP**, na aba **Configurações**.
+  Gerencie todas as opções abaixo diretamente pela nossa Dashboard no menu **Sistema de XP** e na aba **Cargos por Nível (XP)** do menu **Loja & Recompensas**.
 </Callout>
 
 ![XP](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_system.png)
 
 ## Ativar / Desativar o Sistema
-O primeiro passo é ligar o módulo de XP no seu servidor. Enquanto estiver desativado, nenhum membro ganhará experiência ou moedas.
-*   **Dashboard:** Acesse a aba **Progresso de XP** > **Configuração** e alterne o botão de **Status do Sistema**.
+O primeiro passo é habilitar o módulo de XP no seu servidor. Enquanto estiver desativado, nenhuma mensagem ou minuto em call concederá experiência ou moedas.
+*   **Dashboard:** Acesse **Comunidade** > **Progresso de XP** e alterne o botão de **Status do Sistema**.
 
 ![XP On](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_on.png)
 
 ## Como se Ganha XP?
 
-### XP por Mensagens (Texto)
-Cada mensagem enviada rende entre **12 e 40 XP**, calculados automaticamente com base na qualidade da mensagem:
-*   **Tamanho:** Mensagens mais longas rendem um bônus de até **+15 XP** (1 XP extra a cada 5 caracteres).
-*   **Complexidade:** Mensagens com mais palavras ganham um bônus de até **+10 XP** (1 XP extra a cada 3 palavras).
-*   **Variância Natural:** Um ajuste aleatório de ±3 XP é aplicado para que o ganho pareça orgânico.
-*   **Cooldown:** Existe um intervalo de **5 segundos** entre ganhos de XP para evitar flood.
+### 💬 XP por Mensagens (Texto)
+Cada mensagem enviada rende entre **12 e 40 XP**, avaliados de forma inteligente:
+*   **Tamanho:** Mensagens mais ricas em caracteres concedem bônus de até **+15 XP**.
+*   **Complexidade:** Quantidade de palavras estruturadas rende bônus de até **+10 XP**.
+*   **Variância Orgânica:** Um ajuste dinâmico de ±3 XP é aplicado para manter ganhos naturais.
+*   **Cooldown Ajustável:** O intervalo mínimo de espera entre mensagens pode ser configurado entre **5 e 300 segundos** (padrão: 5s) para se adaptar ao ritmo do seu servidor.
 
-<Callout variant="info" title="Anti-Spam Inteligente">
-  A Shiro ignora automaticamente mensagens muito curtas (menos de 3 caracteres), com caracteres repetidos excessivos (ex: "kkkkkkkkkkkk"), keyboard mash e mensagens duplicadas enviadas mais de 3 vezes seguidas. Essas mensagens não contam para XP.
+<Callout variant="info" title="Anti-Spam & Anti-Flood Inteligente">
+  A Shiro ignora automaticamente mensagens com menos de 3 caracteres, repetições excessivas de caracteres, keyboard mashing e mensagens duplicadas enviadas em sequência.
 </Callout>
 
-### XP por Voz (Call)
-Participar de canais de voz também rende XP! A cada minuto em call, o membro recebe:
-*   **Base:** 15 XP/min em uma call com 2+ pessoas.
-*   **Câmera Ligada:** +15 XP/min de bônus.
-*   **Transmitindo Tela (Stream):** +10 XP/min de bônus.
-*   **Teto Máximo:** 40 XP/min (combinando todos os bônus).
+### 🎙️ XP por Voz (Chamadas)
+Permanecer em canais de voz recompensa a atividade dos membros a cada minuto em call:
+*   **Base em Grupo:** 15 XP/min em chamadas com 2 ou mais participantes.
+*   **Câmera Ativada:** +15 XP/min de bônus.
+*   **Transmissão de Tela (Stream):** +10 XP/min de bônus.
+*   **Teto Máximo:** 40 XP/min combinando todos os incentivos de participação.
 
 <Callout variant="warning">
-  **Anti-Farm:** Se o membro estiver **sozinho** na call, o ganho é reduzido drasticamente para apenas **2 XP/min**, desencorajando o farm de XP em canais vazios.
+  **Anti-Farm:** Se o membro permanecer **sozinho** na call de voz, o ganho é reduzido para **2 XP/min**, evitando farms em salas vazias.
 </Callout>
 
-## Conversão de XP em Moedas
-O XP acumulado é convertido automaticamente em **moedas locais** do servidor na proporção de **1 moeda a cada 15 XP**. Essas moedas são usadas para comprar itens na Loja de Pontos do servidor.
+## ⚡ Multiplicadores de XP (Canais e Cargos)
+Destaque áreas de conversa ou reconheça membros especiais adicionando multiplicadores personalizados:
+*   **Multiplicadores por Canal:** Defina bônus em canais específicos (ex: \`#bate-papo geral\` ou \`#eventos\` com **1.5x** ou **2.0x** de XP).
+*   **Multiplicadores por Cargo:** Conceda vantagens automáticas para cargos selecionados (ex: Booster, VIP, Moderador ou Apoiador).
+*   **Cálculo Dinâmico:** Os multiplicadores são calculados de forma segura e acumulativa no momento em que a ação de texto ou voz ocorre.
 
-## Sistema de Streak (Dias Consecutivos)
-Manter atividade diária no servidor recompensa o membro com multiplicadores crescentes de XP:
+## 🎖️ Cargos por Nível (Level Roles)
+Recompense o esforço dos membros com cargos atribuídos automaticamente assim que eles sobem de nível!
+Configurados na aba **Cargos por Nível (XP)** do menu **Loja & Recompensas**, suportam dois modos de operação:
+*   **Modo Acumulativo (Stack):** O membro mantém todos os cargos conquistados nos níveis anteriores à medida que avança.
+*   **Modo Substitutivo (Replace):** A Shiro remove automaticamente o cargo da patente anterior e entrega apenas o cargo do nível mais recente, mantendo a lista de cargos limpa e destacando a maior patente.
+
+## 🪙 Conversão em Moedas & Economia
+A experiência acumulada é convertida automaticamente em **moedas locais** do servidor na proporção de **1 moeda a cada 15 XP**. Essas moedas abastecem a **Loja & Recompensas** e o **Mercado Comunitário**.
+
+## 🔥 Sistema de Streak & Proteção (Freeze)
+A atividade contínua no servidor desbloqueia multiplicadores diários crescentes:
 
 | Dias Consecutivos | Multiplicador de XP |
 |:---|:---:|
@@ -893,92 +905,47 @@ Manter atividade diária no servidor recompensa o membro com multiplicadores cre
 | 🔥 14 dias | **+30%** |
 | 🔥 30+ dias | **+50%** |
 
-<Callout variant="warning">
-  **Importante:** Se o membro ficar **1 dia sem atividade**, o streak é resetado para 0. Membros **VIP** possuem tolerância extra (dias de folga sem perder o streak).
+<Callout variant="info">
+  **Streak Freeze:** Membros podem adquirir proteção de streak na loja para evitar perder a sequência acumulada caso fiquem um dia ausentes.
 </Callout>
 
-*   Itens da **CoffeeShop** podem conceder proteção de streak temporária.
+## 🏆 Marcos Especiais (Milestones)
+Celebre conquistas de longo prazo com bônus expressivos em moedas entregues automaticamente nos marcos de nível:
+*   **Nível 10:** 🪙 700 moedas
+*   **Nível 25:** 🪙 1.500 moedas
+*   **Nível 50:** 🪙 3.000 moedas
+*   **Nível 75:** 🪙 7.500 moedas
+*   **Nível 100:** 🪙 10.000 moedas
+*   **Pós-100:** Marcos adicionais a cada **25 níveis** (nível 125, 150, etc.) com recompensas proporcionais.
+*   *Você pode habilitar ou desabilitar as recompensas de marcos a qualquer momento na Dashboard.*
 
-## Milestones (Marcos Especiais)
-Ao atingir determinados níveis, o membro recebe um bônus massivo de moedas como recompensa:
-
-| Nível Alcançado | Recompensa em Moedas |
-|:---:|:---:|
-| **Nível 10** | 🪙 700 moedas |
-| **Nível 25** | 🪙 1.500 moedas |
-| **Nível 50** | 🪙 3.000 moedas |
-| **Nível 75** | 🪙 7.500 moedas |
-| **Nível 100** | 🪙 10.000 moedas |
-
-## Notificações de Level Up
-Configure como a Shiro deve avisar quando um membro subir de nível. Você pode escolher entre 3 modos:
-*   **Resposta no Chat:** A Shiro responde diretamente à mensagem que causou o level up.
-*   **Canal Específico:** Todas as notificações de level up são enviadas para um canal de texto dedicado (ex: #level-ups).
-*   **Mensagem Direta (DM):** O membro recebe a notificação via DM privada.
+## 🔔 Notificações de Level Up
+Personalize a forma como as subidas de nível são comemoradas:
+*   **Resposta no Chat:** Resposta direta com menção à mensagem que gerou o level up.
+*   **Canal Específico:** Envio centralizado em um canal de anúncios dedicado (ex: \`#conquistas\` ou \`#level-up\`).
+*   **Mensagem Privada (DM):** Mensagem direta enviada para a DM do membro.
 
 ![XP Notificação](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_notify.png)
 
-## Canais Bloqueados (Blacklist)
-Impeça que membros ganhem XP em canais específicos. Útil para excluir canais onde o conteúdo não deve contar como atividade:
-*   **Canais de Texto:** Selecione canais como \`#bot-commands\`, \`#spam\` ou \`#off-topic\` onde mensagens não devem render XP.
-*   **Canais de Voz:** Selecione canais de voz como \`🎵 Música\` ou \`AFK\` onde o tempo em call não deve contar.
+## 🚫 Canais e Cargos Bloqueados (Blacklist)
+*   **Canais Bloqueados:** Impeça o ganho de XP em canais de comandos de bots, spam ou salas de música/AFK.
+*   **Cargos Bloqueados:** Isole bots, cargos de punição (muted) ou contas administrativas do ganho de XP e do ranking.
 
-![XP Canais Bloqueados](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_block.png)
+## 👑 Cargos de Pódio (Top 3) & Ciclos de Reset
+Recompense os 3 membros mais ativos do servidor com cargos de prestígio:
+*   **🥇 Top 1 / 🥈 Top 2 / 🥉 Top 3**
+*   **Ciclos de Reset:** Configure a rotatividade do ranking entre vitalício (sem reset), semanal, quinzenal ou mensal. Os cargos são redistribuídos automaticamente a cada virada de ciclo.
 
-## Cargos Bloqueados
-Membros que possuírem qualquer cargo desta lista **não ganharão XP nem moedas** ao enviar mensagens ou ficar em call. Ideal para:
-*   Cargos de punição (ex: "Muted", "Isolado").
-*   Bots ou contas de serviço.
-*   Membros que você não deseja que participem do ranking.
+## 📜 Missões Semanais (Quests)
+Missões dinâmicas que incentivam a participação saudável da comunidade com desafios como "Enviar 100 mensagens", "Participar de 45 minutos em call" e "Manter streak ativo".
 
-![XP Cargos Bloqueados](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_block_roles.png)
-
-## Cargos de Pódio (Top 3)
-Recompense os membros mais ativos automaticamente com cargos exclusivos! Configure um cargo para cada posição do pódio:
-*   **🥇 Top 1:** O membro com mais XP competitivo recebe este cargo.
-*   **🥈 Top 2:** O segundo colocado.
-*   **🥉 Top 3:** O terceiro colocado.
-
-![XP Cargos de Pódio](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_podium.png)
-
-### Intervalo de Reset do Pódio
-O ranking competitivo pode ser resetado automaticamente em ciclos configuráveis:
-*   **Eterno (Forever):** O ranking nunca reseta. O pódio é vitalício.
-*   **Semanal:** Reseta toda semana, os cargos são redistribuídos.
-*   **Quinzenal:** Reseta a cada 2 semanas.
-*   **Mensal:** Reseta todo mês.
-
-<Callout variant="info">
-  Os cargos de pódio são atualizados automaticamente a cada reset. O membro que perder sua posição terá o cargo removido e o novo líder o receberá.
-</Callout>
-
-## Missões Semanais (Quests)
-Ative o sistema de missões para dar aos membros objetivos concretos e recompensas extras:
-*   Missões são geradas automaticamente a cada semana.
-*   Exemplos: "Envie 50 mensagens", "Fique 30 minutos em call", "Mantenha um streak de 3 dias".
-*   Ao completar uma quest, o membro ganha bônus de XP e moedas.
-
-Use o comando \`/quests\` no Discord para visualizar as missões disponíveis.
-
-![XP Missões](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_quests.png)
-
-## Ferramentas Administrativas (Zona de Perigo)
-Na aba de configurações, administradores têm acesso a ferramentas destrutivas para gestão de dados:
-*   **Resetar XP do Servidor:** Zera todo o XP acumulado por todos os membros. Os níveis voltam ao 1. **Esta ação é irreversível.**
-*   **Deletar XP e Moedas:** Remove completamente todos os dados de XP e moedas do servidor. *(Restrito a desenvolvedores.)*
-
-<Callout variant="warning">
-  **Atenção:** Ambas as ações exigem confirmação via diálogo e são **permanentes**. Recomendamos usar apenas em casos extremos, como reiniciar completamente o sistema de economia do servidor.
-</Callout>
-
-![XP Ferramentas Administrativas](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_tools.png)
-
-## Comandos Relacionados
-*   \`/xp ver\` — Veja seu nível, XP e progresso atual.
-*   \`/xp ver [usuario]\` — Confira o XP de outro membro.
-*   \`/xp ranking\` — Veja o Top 10 do servidor.
-*   \`/quests\` — Visualize suas missões semanais.
-*   \`/wallet\` — Confira seu saldo de moedas.
+## 🛠️ Comandos Relacionados
+*   \`/xp ver\` — Consulta o nível, progresso e estatísticas de XP.
+*   \`/xp ranking\` — Exibe a classificação do servidor.
+*   \`/xp-config\` — Painel de configuração administrativa via bot.
+*   \`/quests\` — Acompanha desafios semanais disponíveis.
+*   \`/wallet\` — Consulta o saldo local de moedas e carteira global.
+*   \`/daily\` — Resgata moedas diárias com bônus de sequência.
 `,
 
   'anti-selfbot': `
@@ -1318,18 +1285,28 @@ O sistema de tickets da Shiro (Nekomura Tickets) é uma aplicação própria do 
 `,
 
   'loja-dash': `
-# Loja de Pontos
+# Loja & Recompensas
 
-Monetize a atividade do seu servidor com uma loja completa. Seus membros podem gastar o XP e moedas que ganharam conversando para adquirir recompensas exclusivas.
+Monetize a atividade da sua comunidade com um catálogo completo de recompensas por moedas e concessão automatizada de cargos por nível de XP.
 
-## Criação de Itens
-Pelo painel visual, você pode criar diversos tipos de itens:
-*   **Venda de Cargos:** O item mais comum. Ao comprar, o usuário recebe um cargo automaticamente (ex: Cargo VIP ou Cor Exclusiva).
-*   **Itens de Mensagem:** O usuário compra um item que envia uma notificação para a staff (ex: "Pedido de Música" ou "Destaque no Mural").
-*   **Estoque e Preços:** Defina um valor justo e limite a quantidade de itens disponíveis.
+Acesse o painel em **Economia** > **Loja & Recompensas** para alternar entre as abas:
 
-## Mercado de Revenda
-A Shiro suporta um sistema de revenda onde usuários podem colocar seus itens comprados de volta à venda para outros membros, criando uma economia interna vibrante.
+---
+
+## 🛍️ Itens da Loja (Moedas)
+Crie itens e vantagens que seus membros podem adquirir usando as moedas acumuladas pela participação no servidor:
+*   **Entrega de Cargos:** Venda cargos exclusivos, cores ou acessos especiais, com suporte a duração **temporária** (em dias) ou **permanente**.
+*   **Itens Únicos por Usuário:** Limite compras a 1 unidade por membro para produtos comemorativos ou badges.
+*   **Controle de Estoque:** Defina quantidades máximas disponíveis e configure **intervalos automáticos de reposição de estoque** (a cada X horas ou dias).
+*   **Mercado de Revenda:** Permita que os membros revendam itens adquiridos entre si através do comando \`/market\`.
+
+---
+
+## 🎖️ Cargos por Nível (XP)
+Configure cargos que os membros recebem automaticamente ao subir de nível:
+*   **Regras por Nível:** Escolha o nível desejado (ex: Nível 5, 10, 20, 50) e selecione o cargo correspondente.
+*   **Modo Acumulativo (Stack):** O membro acumula todos os cargos de patentes anteriores à medida que evolui.
+*   **Modo Substitutivo (Replace):** O cargo do nível anterior é automaticamente removido e substituído pelo novo cargo, mantendo a hierarquia visual limpa.
 
 ![Shop Dashboard](https://cdn.shardcloud.app/906a6e21-320c-4230-b796-04c5aa0caa40/doc/xp_rewards.png)
 `,
