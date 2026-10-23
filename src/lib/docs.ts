@@ -113,7 +113,7 @@ Após adicionar o bot, você pode começar a configurar as funcionalidades princ
 Agora que a Shiro está no seu servidor, que tal configurar os módulos principais?
 *   [Configurar Verificação de Artistas](/docs/verificacao-dash)
 *   [Ativar Sistema de XP](/docs/sistema-xp)
-*   [Configurar Anti-Selfbot](/docs/anti-selfbot)
+*   [Configurar Segurança (Anti-Selfbot & Anti-Flood)](/docs/anti-selfbot)
 *   [Configurar Canal Armadilha](/docs/honeypot)
 `,
 
@@ -386,8 +386,23 @@ Recompense a atividade dos seus membros com experiência e moedas através de um
   usage="/xp ver usuario: @Hito"
 />
 <CommandCard 
+  name="/rank voice" 
+  description="Exibe o placar dos membros mais ativos em chamadas de voz no servidor, baseado no tempo acumulado em call com navegação paginada." 
+  usage="/rank voice pagina: 1"
+/>
+<CommandCard 
+  name="/rank chat" 
+  description="Exibe o placar dos membros mais ativos em mensagens e ganho de XP de chat no servidor com navegação paginada." 
+  usage="/rank chat pagina: 1"
+/>
+<CommandCard 
+  name="/rank global" 
+  description="Exibe o ranking global unificado entre todos os servidores onde a Shiro está presente e com sistema de XP ativo." 
+  usage="/rank global pagina: 1"
+/>
+<CommandCard 
   name="/xp ranking" 
-  description="Exibe o placar dos membros mais ativos e com maior nível de XP no servidor, com navegação paginada." 
+  description="Atalho alternativo para consultar a classificação de XP local do servidor com navegação paginada." 
   usage="/xp ranking pagina: 1"
 />
 
@@ -736,6 +751,9 @@ A página de Visão Geral é a primeira tela que você vê ao entrar no painel d
 <Callout variant="tip">
   A Visão Geral é atualizada constantemente. Use-a como um painel diário para verificar a saúde e o engajamento da sua comunidade antes de mexer em configurações mais complexas.
 </Callout>
+
+## Performance & Skeleton Loaders
+A navegação pela Dashboard agora conta com **Skeleton Loaders Ultra-Realistas** em todas as seções. Ao alternar entre menus (Moderação, Segurança, Economia, XP, etc.), o esqueleto visual exato de cada tela é apresentado imediatamente enquanto dados e dependências pesadas carregam em segundo plano via Code Splitting, eliminando telas pretas e quebras de layout.
 `,
 
   'analytics-dash': `
@@ -941,7 +959,10 @@ Missões dinâmicas que incentivam a participação saudável da comunidade com 
 
 ## 🛠️ Comandos Relacionados
 *   \`/xp ver\` — Consulta o nível, progresso e estatísticas de XP.
-*   \`/xp ranking\` — Exibe a classificação do servidor.
+*   \`/rank voice\` — Exibe o ranking dos membros com maior tempo em chamadas de voz.
+*   \`/rank chat\` — Exibe o ranking dos membros mais ativos no chat do servidor.
+*   \`/rank global\` — Exibe o ranking global unificado com os maiores níveis da Shiro.
+*   \`/xp ranking\` — Atalho alternativo para a classificação local de XP.
 *   \`/xp-config\` — Painel de configuração administrativa via bot.
 *   \`/quests\` — Acompanha desafios semanais disponíveis.
 *   \`/wallet\` — Consulta o saldo local de moedas e carteira global.
@@ -949,46 +970,62 @@ Missões dinâmicas que incentivam a participação saudável da comunidade com 
 `,
 
   'anti-selfbot': `
-# Anti-Selfbot
+# Segurança (Anti-Selfbot & Anti-Flood)
 
-A Shiro vigia contas que mandam a **mesma mensagem em vários canais** (o padrão dos selfbots de spam) e age em segundos, enquanto a conta ainda está mandando.
+A seção **Segurança** na Dashboard reúne a suíte de defesa ativa da Shiro para proteger seu servidor em tempo real contra ataques automatizados, spammers e invasões.
 
 <Callout variant="tip">
-  Na Dashboard, a seção **Anti-Selfbot** tem duas abas: **Detecção inteligente** (esta página) e **Canal Armadilha** ([veja aqui](/docs/honeypot)). As duas funcionam juntas e você pode ligar uma, a outra ou as duas.
+  Na Dashboard, o menu **Segurança** conta com três abas dedicadas:
+  1. **Detecção Inteligente:** Heurística avançada para capturar selfbots que espalham a mesma mensagem em vários canais.
+  2. **Anti-Flood (Novo):** Proteção imediata contra rajadas de mensagens consecutivas no mesmo canal ou servidor.
+  3. **Canal Armadilha (Honeypot):** Canais isca secretos em texto e voz ([veja aqui](/docs/honeypot)).
 </Callout>
 
-## Como ela decide
-A análise é rápida e acontece toda na memória do bot:
+---
 
-*   **Compara cada mensagem com as anteriores da mesma conta.** Com anexos, compara os **arquivos** (tipo e tamanho), então mudar o texto não engana.
-*   **Dispara** quando a mesma mensagem aparece em vários canais dentro da janela da sensibilidade escolhida, ou muitas vezes no mesmo canal. Textos curtinhos ("oi", "kkk") precisam de mais canais para contar.
-*   **Calcula a confiança** (alta ou média) com base nos chats de call usados, imagens por mensagem, links e convites, idade da conta, tempo no servidor e a flag de spammer do Discord.
-*   **Depois de pegar alguém**, as próximas cópias da mesma mensagem somem na hora por 10 minutos.
-*   O **canal armadilha** fica de fora da contagem: quem escrever lá segue as regras da aba Canal Armadilha.
+## 1. Detecção Inteligente (Anti-Selfbot)
+A Shiro vigia contas que mandam a **mesma mensagem em vários canais** (o padrão clássico dos selfbots de spam e phishing) e age em segundos:
 
-## Configurações
-*   **Ação:** só avisar no canal de logs, apagar as cópias, apagar + castigo (timeout), apagar + expulsar ou banir (apaga as mensagens da última hora).
-*   **Duração do castigo:** de 10 minutos a 28 dias (só para a ação de castigo).
+*   **Análise em Memória:** Compara cada mensagem com as anteriores da mesma conta. Com anexos, compara o hash e tamanho dos **arquivos**, impedindo que a troca de legenda burle a detecção.
+*   **Disparo Ágil:** Dispara quando a mesma mensagem aparece em múltiplos canais dentro do intervalo de sensibilidade configurado.
+*   **Cálculo de Confiança:** Avalia chats de voz usados, presença de links/convites, idade da conta no Discord, tempo no servidor e flag de spammer.
+*   **Supressão Automática:** Após detectar um infrator, qualquer cópia repetida adicional é silenciada e excluída imediatamente por 10 minutos.
+
+### Configurações do Anti-Selfbot
+*   **Ações:** Apenas notificar no canal de logs, apagar mensagens, apagar + castigo (timeout), expulsar (kick) ou banir com exclusão de histórico da última hora.
 *   **Sensibilidade:**
     - **Alta:** 3 canais em até 2 minutos.
-    - **Normal (recomendado):** 4 canais em até 1 minuto.
+    - **Normal (Recomendado):** 4 canais em até 1 minuto.
     - **Baixa:** 5 canais em até 1 minuto.
-    - **Personalizada:** você escolhe em quantos canais a mesma mensagem precisa aparecer (de 2 a 10) e dentro de quanto tempo (de 15 segundos a 10 minutos).
-*   **Canal de logs:** recebe um relatório com a análise e os botões **Banir** e **Falso positivo**.
-*   **Cargos ignorados:** membros com esses cargos nunca são analisados.
+    - **Personalizada:** Você escolhe o número de canais (2 a 10) e a janela de tempo (15s a 10 min).
+*   **Duração do Castigo:** De 10 minutos até 28 dias.
+*   **Falso Positivo:** Botão direto no canal de logs e na Dashboard para desbanir ou retirar o castigo imediatamente caso ocorra um falso positivo.
+
+---
+
+## 2. Anti-Flood (Proteção contra Rajadas)
+O módulo de **Anti-Flood** previne que usuários ou contas invadam chats enviando dezenas de mensagens por segundo para poluir o canal ou travar o chat dos membros:
+
+*   **Monitoramento em Tempo Real:** Controla a frequência de mensagens enviadas por um mesmo membro em curtos intervalos de tempo.
+*   **Limite de Mensagens:** Defina o limite de mensagens permitidas (ex: 5 mensagens) dentro da janela de tempo desejada (ex: 5 segundos).
+*   **Ações Punitivas Automáticas:**
+    - **Silenciar (Timeout):** Aplica castigo temporário com tempo personalizável (de 1 minuto a 28 dias).
+    - **Expulsar (Kick):** Remove o membro do servidor.
+    - **Banir (Ban):** Bane permanentemente o usuário que causou o flood.
+    - **Apenas Deletar:** Remove automaticamente as mensagens em excesso sem punir a conta.
+*   **Canais Ignorados:** Adicione canais onde mensagens rápidas são bem-vindas (ex: canais de jogos, contagem de números, spam liberado).
+*   **Cargos Ignorados:** Isente moderadores, bots confiáveis ou cargos específicos de passarem pelo crivo do anti-flood.
 
 <Callout variant="warning">
-  **Quem nunca é analisado:** bots, webhooks, o dono do servidor, quem tem \`Administrador\`, \`Gerenciar Mensagens\` ou \`Gerenciar Servidor\` e os cargos ignorados.
+  **Quem nunca é analisado:** Bots, webhooks, dono do servidor, membros com permissão de \`Administrador\`, \`Gerenciar Mensagens\` ou \`Gerenciar Servidor\`, além dos cargos configurados na lista de ignorados.
 </Callout>
 
-## Falso positivo
-Se a Shiro pegar alguém por engano, use o botão **Falso positivo** no relatório do canal de logs ou na lista de ocorrências da Dashboard. O castigo (ou o ban) é removido na hora. As mensagens apagadas não voltam.
+---
 
-## Ocorrências e privacidade
-*   Cada detecção fica registrada na Dashboard com a análise completa (conteúdo, canais, tempo, motivo e ação tomada).
-*   Os registros ficam guardados por **30 dias** e depois são **apagados por completo** do banco de dados, sem cópias.
-*   Você pode limpar o histórico do servidor a qualquer momento pelo botão **Limpar**.
-*   O relatório enviado no canal de logs é uma mensagem do Discord e continua lá até a sua equipe apagá-la.
+## 3. Histórico de Ocorrências e Privacidade
+*   Todas as ações tomadas pelo sistema de Segurança ficam registradas na Dashboard com detalhes: autor, infração, canais afetados, timestamp e ação aplicada.
+*   Os registros são armazenados com segurança por **30 dias** e depois são expurgados definitivamente.
+*   Você pode limpar o histórico do servidor a qualquer momento através do botão **Limpar Ocorrências**.
 `,
 
   honeypot: `
@@ -997,7 +1034,7 @@ Se a Shiro pegar alguém por engano, use o botão **Falso positivo** no relatór
 Configure armadilhas em canais de texto ou voz para punir automaticamente selfbots e usuários maliciosos.
 
 <Callout variant="info">
-  O Canal Armadilha agora fica dentro da seção **Anti-Selfbot** da Dashboard, na aba **Canal Armadilha**. Na outra aba está a [Detecção inteligente](/docs/anti-selfbot), que pega selfbots que espalham a mesma mensagem por vários canais.
+  O Canal Armadilha agora fica dentro da seção **Segurança** da Dashboard, na aba **Canal Armadilha**. Nas outras abas estão a [Detecção inteligente](/docs/anti-selfbot) (contra selfbots multi-canais) e o [Anti-Flood](/docs/anti-selfbot) (contra rajadas de mensagens).
 </Callout>
 
 <Callout variant="tip">
@@ -1437,6 +1474,15 @@ Acompanhe as últimas novidades, correções de bugs e funcionalidades adicionad
 <Callout variant="info">
   **Nota:** As atualizações menores e correções de bugs não são postadas ao publico, apenas atualizações importantes são postadas.
 </Callout>
+
+## Atualização - Rankings Avançados & Segurança Reforçada 23/10/2026
+*   **Novos Comandos /rank:**
+    *   \`/rank voice\`: Leaderboard dedicado para tempo acumulado em chamadas de voz com paginação dinâmica.
+    *   \`/rank chat\`: Leaderboard dos membros mais ativos em mensagens e ganho de XP de chat.
+    *   \`/rank global\`: Leaderboard global unificado entre todos os servidores onde a Shiro está presente com sistema de XP ativo.
+*   **Seção de Segurança na Dashboard:** A seção foi rebatizada para **Segurança**, unificando as defesas ativas do servidor: Detecção Inteligente (Anti-Selfbot), Canal Armadilha (Honeypot) e o novo módulo **Anti-Flood**.
+*   **Módulo Anti-Flood:** Proteção em tempo real contra rajadas de spam com rate-limit customizável (mensagens / segundos), ações automáticas (Timeout, Kick, Ban ou Deletar apenas), duração de castigo flexível e lista de exceções para canais e cargos.
+*   **Skeleton Loaders Realistas:** Implementação de 12 variantes de skeletons contextuais na Dashboard (\`SectionLoading\`), renderizando a estrutura fiel de cada página durante o carregamento assíncrono.
 
 ## Atualização - Builder de Mensagens 02/10/2026
 *   **Builder de Mensagens:** novo menu no site (⋯ > Builder de Mensagens) para montar mensagens Components V2, exportar o JSON e enviar ou editar por webhook.

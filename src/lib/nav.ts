@@ -50,7 +50,7 @@ export const NAV_GROUPS: NavGroup[] = [
     pages: [
       { title: "Verificação", slug: "verificacao-dash" },
       { title: "Restrição de Cargos", slug: "restricao-cargos-dash", badge: "novo" },
-      { title: "Anti-Selfbot", slug: "anti-selfbot", badge: "novo" },
+      { title: "Segurança", slug: "anti-selfbot", badge: "novo" },
       { title: "Canal Armadilha", slug: "honeypot" },
       { title: "Blacklist", slug: "blacklist-dash" },
       { title: "Apelações de Ban", slug: "apelacoes-dash" },
