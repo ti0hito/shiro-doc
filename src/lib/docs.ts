@@ -671,31 +671,33 @@ Ferramentas completas para artistas e criadores visuais.
   usage="/register"
 />
 
-## Ferramentas de Imagem
+## Ferramentas de Imagem (/tools)
+Canivete suíço completo para edição, compressão, remoção de metadados e conversão de imagens em alta performance.
+
 <CommandCard 
-  name="/color_palette" 
-  description="Extrai a paleta de cores predominante de uma imagem." 
-  usage="/color_palette imagem: [arquivo]"
+  name="/tools resize" 
+  description="Redimensiona imagens para os formatos oficiais das principais redes sociais (Instagram, Twitter/X, TikTok, Discord e outros)." 
+  usage="/tools resize imagem: [arquivo] preset: Instagram Post (1080x1080) ajuste: Cobrir"
 />
 <CommandCard 
-  name="/exif" 
-  description="Remove dados EXIF e metadados ocultos de imagens por segurança." 
-  usage="/exif imagem: [arquivo]"
+  name="/tools convert" 
+  description="Converte arquivos entre múltiplos formatos modernos (PNG, JPEG, WebP, AVIF, GIF, TIFF) com controle fino de qualidade." 
+  usage="/tools convert arquivo: [arquivo] formato: webp qualidade: 90"
 />
 <CommandCard 
-  name="/resize" 
-  description="Redimensiona imagens para os tamanhos das redes sociais (Instagram, Twitter, TikTok e outros)." 
-  usage="/resize imagem: [arquivo] preset: Instagram Post (1080x1080)"
+  name="/tools comprimir" 
+  description="Comprime e reduz o peso de imagens e GIFs mantendo a máxima fidelidade visual e detalhes." 
+  usage="/tools comprimir imagem: [arquivo] nivel: Média largura_maxima: 1920"
 />
 <CommandCard 
-  name="/convert" 
-  description="Converte arquivos entre formatos (PNG, JPEG, WEBP, AVIF e GIF) com qualidade ajustável." 
-  usage="/convert arquivo: [arquivo] formato: webp qualidade: 80"
+  name="/tools exif" 
+  description="Higieniza a imagem removendo dados EXIF de câmera, perfis e metadados ocultos de privacidade." 
+  usage="/tools exif imagem: [arquivo]"
 />
 <CommandCard 
-  name="/reduzir" 
-  description="Reduz o peso de imagens e GIFs mantendo a qualidade visual." 
-  usage="/reduzir imagem: [arquivo] nivel: Média"
+  name="/tools palette" 
+  description="Extrai a paleta de cores dominante da imagem e gera um cartão infográfico SVG com códigos HEX e RGB." 
+  usage="/tools palette imagem: [arquivo]"
 />
 `,
 
