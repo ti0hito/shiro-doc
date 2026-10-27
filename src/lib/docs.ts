@@ -23,9 +23,9 @@ Ao contrário de sistemas tradicionais que salvam históricos no banco de dados 
 Você pode abrir diretamente a página de configuração de logs usando o comando:
 
 <CommandCard 
-  name="/configurar logs" 
+  name="/config logs" 
   description="Abre o atalho com botão direto para o painel de Logs & Auditoria do seu servidor na Dashboard." 
-  usage="/configurar logs"
+  usage="/config logs"
 />
 
 ## Categorias e Eventos Disponíveis
@@ -132,24 +132,29 @@ Gerencie seu servidor com precisão e configure as regras do bot.
 
 ## Atalhos para a Dashboard
 <CommandCard 
-  name="/configurar geral" 
+  name="/config geral" 
   description="Atalho para a configuração geral do servidor na Dashboard." 
-  usage="/configurar geral"
+  usage="/config geral"
 />
 <CommandCard 
-  name="/configurar verificacao" 
+  name="/config verificacao" 
   description="Atalho para a configuração das Verificações na Dashboard." 
-  usage="/configurar verificacao"
+  usage="/config verificacao"
 />
 <CommandCard 
-  name="/configurar feedback" 
+  name="/config feedback" 
   description="Atalho para a configuração do Sistema de Feedbacks na Dashboard." 
-  usage="/configurar feedback"
+  usage="/config feedback"
 />
 <CommandCard 
-  name="/configurar logs" 
+  name="/config logs" 
   description="Atalho para a configuração do Sistema de Logs & Auditoria via Webhook na Dashboard." 
-  usage="/configurar logs"
+  usage="/config logs"
+/>
+<CommandCard 
+  name="/config xp" 
+  description="Abre o painel modular interativo de configuração de XP, Gamificação e Loja." 
+  usage="/config xp"
 />
 <CommandCard 
   name="/analytics" 
@@ -322,19 +327,9 @@ Gerencie seu servidor com precisão e configure as regras do bot.
   usage="/timed_role listar"
 />
 <CommandCard 
-  name="/cargo-agendamento criar" 
-  description="Cria um painel onde membros agendam o recebimento de um cargo após alguns dias." 
-  usage="/cargo-agendamento criar cargo: @Fundador titulo: Resgate dias: 7"
-/>
-<CommandCard 
-  name="/cargo-agendamento listar" 
-  description="Lista os painéis de agendamento do servidor." 
-  usage="/cargo-agendamento listar"
-/>
-<CommandCard 
-  name="/cargo-agendamento remover" 
-  description="Remove um painel de agendamento." 
-  usage="/cargo-agendamento remover painel-id: ID_DO_PAINEL"
+  name="/cargo-agendado" 
+  description="Instruções e atalho direto para configurar o sistema de cargo por agendamento na Dashboard." 
+  usage="/cargo-agendado"
 />
 <CommandCard 
   name="/ticket-setup" 
@@ -424,9 +419,9 @@ Recompense a atividade dos seus membros com experiência e moedas através de um
 
 ## Configuração (Staff)
 <CommandCard 
-  name="/xp-config" 
+  name="/config xp" 
   description="Abre o painel interativo (Components V2) para gerenciar o módulo de XP, canais e cargos com multiplicador, tempo de cooldown, canais ignorados e notificações de level up." 
-  usage="/xp-config"
+  usage="/config xp"
 />
 `,
 
@@ -596,19 +591,19 @@ Comandos essenciais de ajuda, identidade e status.
 
 ## Informação & Diversão
 <CommandCard 
-  name="/apod hoje" 
+  name="/nasa hoje" 
   description="Mostra a Foto Astronômica do Dia da NASA." 
-  usage="/apod hoje"
+  usage="/nasa hoje"
 />
 <CommandCard 
-  name="/apod config" 
+  name="/nasa config" 
   description="Configura a postagem automática diária do APOD (Staff)." 
-  usage="/apod config canal: #astronomia horario: 09:00"
+  usage="/nasa config canal: #astronomia horario: 09:00"
 />
 <CommandCard 
-  name="/apod desativar" 
+  name="/nasa desativar" 
   description="Desativa a postagem automática do APOD (Staff)." 
-  usage="/apod desativar"
+  usage="/nasa desativar"
 />
 <CommandCard 
   name="/steam" 
@@ -619,11 +614,6 @@ Comandos essenciais de ajuda, identidade e status.
   name="/resumo_server" 
   description="Mostra um resumo geral do servidor com dados e estatísticas." 
   usage="/resumo_server"
-/>
-<CommandCard 
-  name="/server_stats_image" 
-  description="Gera um cartão gráfico com as estatísticas do servidor." 
-  usage="/server_stats_image"
 />
 <CommandCard 
   name="/shiro_news" 
@@ -1216,7 +1206,7 @@ Crie painéis onde os membros agendam o recebimento de um cargo em uma data futu
 *   **Editar painel:** a mensagem no Discord é atualizada (ou reenviada, se tiver sido apagada).
 
 <Callout variant="info">
-  Também dá para gerenciar os painéis pelo comando \`/cargo-agendamento\` (criar, listar e remover).
+  Também dá para gerenciar os painéis pelo comando \`/cargo-agendado\` (criar, listar e remover).
 </Callout>
 `,
 
