@@ -849,6 +849,35 @@ Ao digitar o comando, a Shiro abrirá instantaneamente um **Menu Pop-up (Modal)*
 
 `,
 
+  'button-roles-dash': `
+# Button Role
+
+Permita que os membros do seu servidor escolham ou removam cargos com **apenas um clique** em botões coloridos diretamente nos canais do Discord.
+
+<Callout variant="tip">
+  Diferente do Modal Role (que abre um formulário pop-up), o **Button Role** exibe os botões diretamente na mensagem do canal com prévia ao vivo na Dashboard!
+</Callout>
+
+## Principais Funcionalidades
+
+*   **Construtor Visual com Prévia Realista:** Veja exatamente como o painel, a cor da barra lateral e os botões (Azul, Cinza, Verde ou Vermelho) ficarão no Discord antes mesmo de enviar.
+*   **Múltipla Escolha vs. Escolha Única:**
+    *   **Múltipla Escolha:** Os membros podem pegar vários cargos diferentes clicando nos botões (clicar novamente remove o cargo).
+    *   **Escolha Única:** Ideal para cores, pronomes ou times — o membro só pode manter 1 cargo daquele painel por vez; ao clicar em outro, o anterior é substituído automaticamente.
+*   **Suporte a Emojis:** Adicione emojis padrão ou emojis personalizados do seu servidor em qualquer botão.
+*   **Cargos Necessários (Opcional):** Restrinja quem pode interagir com o painel exigindo até 10 cargos autorizados.
+*   **Envio e Atualização Direta:** Envie o painel para qualquer canal de texto e, sempre que editar os botões na Dashboard, clique em **Atualizar Painel no Discord** para editar a mensagem existente sem precisar apagar e reenviar.
+*   **Builder V2 Avançado:** Quer adicionar galerias de imagem, thumbnails ou divisores extras? Ative o **Builder V2** no painel mantendo todos os botões de cargo vinculados automaticamente.
+
+## Como Configurar
+
+1. Acesse a aba **Button Role** no menu lateral da Dashboard do seu servidor.
+2. Clique em **Adicionar Painel de Button Role**.
+3. Escolha o **Modo de Seleção** (Múltipla ou Única), defina o **Título**, **Descrição** e a **Cor da Barra Lateral**.
+4. Adicione até **25 botões** por painel, escolhendo a cor, emoji, texto e o cargo vinculado a cada um.
+5. Selecione o **Canal** desejado na prévia e clique em **Enviar Painel no Discord**.
+`,
+
   'sistema-xp': `
 # Sistema de XP & Gamificação
 

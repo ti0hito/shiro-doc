@@ -42,6 +42,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { title: "Perfil do Usuário", slug: "perfil-dash" },
       { title: "Canais & Cargos", slug: "canais-dash" },
       { title: "Modal Role", slug: "actions-dash" },
+      { title: "Button Role", slug: "button-roles-dash", badge: "novo" },
     ],
   },
   {
