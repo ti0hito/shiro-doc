@@ -855,27 +855,29 @@ Ao digitar o comando, a Shiro abrirá instantaneamente um **Menu Pop-up (Modal)*
 Permita que os membros do seu servidor escolham ou removam cargos com **apenas um clique** em botões coloridos diretamente nos canais do Discord.
 
 <Callout variant="tip">
-  Diferente do Modal Role (que abre um formulário pop-up), o **Button Role** exibe os botões diretamente na mensagem do canal com prévia ao vivo na Dashboard!
+  O **Button Role** conta com o **Component Builder V2 completo** integrado direto na página (incluindo importação/exportação de JSON pronto) e regras avançadas por painel e por botão!
 </Callout>
 
 ## Principais Funcionalidades
 
-*   **Construtor Visual com Prévia Realista:** Veja exatamente como o painel, a cor da barra lateral e os botões (Azul, Cinza, Verde ou Vermelho) ficarão no Discord antes mesmo de enviar.
-*   **Múltipla Escolha vs. Escolha Única:**
-    *   **Múltipla Escolha:** Os membros podem pegar vários cargos diferentes clicando nos botões (clicar novamente remove o cargo).
-    *   **Escolha Única:** Ideal para cores, pronomes ou times — o membro só pode manter 1 cargo daquele painel por vez; ao clicar em outro, o anterior é substituído automaticamente.
-*   **Suporte a Emojis:** Adicione emojis padrão ou emojis personalizados do seu servidor em qualquer botão.
-*   **Cargos Necessários (Opcional):** Restrinja quem pode interagir com o painel exigindo até 10 cargos autorizados.
-*   **Envio e Atualização Direta:** Envie o painel para qualquer canal de texto e, sempre que editar os botões na Dashboard, clique em **Atualizar Painel no Discord** para editar a mensagem existente sem precisar apagar e reenviar.
-*   **Builder V2 Avançado:** Quer adicionar galerias de imagem, thumbnails ou divisores extras? Ative o **Builder V2** no painel mantendo todos os botões de cargo vinculados automaticamente.
+*   **Component Builder V2 Completo + JSON:** Monte containers, textos, imagens, galerias e fileiras de botões visualmente ou cole um **JSON pronto** diretamente no builder integrado no topo de cada painel.
+*   **Cálculo Automático do Limite do Discord (40 Componentes):** O Discord limita cada mensagem a no máximo **40 componentes no total**. A Dashboard calcula automaticamente quantos botões cabem de acordo com os demais blocos já colocados no seu layout e exibe um aviso em tempo real.
+*   **Modos de Funcionamento do Painel:**
+    *   **Múltipla Escolha:** Alterna vários cargos livremente (com opção de definir um **máximo de cargos simultâneos** por painel).
+    *   **Escolha Única:** Mantém apenas 1 cargo do painel por vez (ao clicar em outro, o anterior é substituído automaticamente).
+    *   **Só Dar / Só Tirar:** Modos dedicados para apenas entregar ou apenas remover cargos.
+*   **Regras Avançadas da Categoria e por Botão:**
+    *   **Remoção Cruzada:** Configure um botão para **remover automaticamente outros cargos** ao ser ativado (ex: pegar VIP Ouro remove VIP Prata).
+    *   **Cargos Obrigatórios e Bloqueados:** Exija cargos específicos (OU / E) ou bloqueie determinados cargos tanto para **toda a categoria/painel** quanto para **um botão específico**.
+*   **Envio e Atualização Direta:** Envie o painel para qualquer canal de texto e atualize a mensagem existente com um clique.
 
 ## Como Configurar
 
 1. Acesse a aba **Button Role** no menu lateral da Dashboard do seu servidor.
 2. Clique em **Adicionar Painel de Button Role**.
-3. Escolha o **Modo de Seleção** (Múltipla ou Única), defina o **Título**, **Descrição** e a **Cor da Barra Lateral**.
-4. Adicione até **25 botões** por painel, escolhendo a cor, emoji, texto e o cargo vinculado a cada um.
-5. Selecione o **Canal** desejado na prévia e clique em **Enviar Painel no Discord**.
+3. Use o **Builder V2** no topo para personalizar a mensagem (ou importar seu JSON) e clique em **Sincronizar Botões no Builder** sempre que adicionar novos botões.
+4. Configure o **Modo do Painel**, limites, requisitos e regras individuais de cada botão.
+5. Selecione o **Canal** no Builder e clique em **Enviar painel** (ou **Atualizar painel**).
 `,
 
   'sistema-xp': `
